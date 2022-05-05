@@ -21,8 +21,8 @@ class CreateSmartpoleTable extends Migration
             $table->string('village',10)->nullable()->name('里別');
             $table->string('road',10)->nullable()->name('路段');
             $table->string('address',100)->nullable()->name('地址');
-            $table->decimal('lat',10,8)->name('緯度');
-            $table->decimal('lng',10,8)->name('經度');
+            $table->decimal('Lat',10,8)->name('緯度');
+            $table->decimal('Lng',10,8)->name('經度');
             $table->string('affiliated',20)->name('所屬機關');
             $table->dateTime('build_date')->name('架設日期');
             $table->string('mode',10)->name('架設方式(桿身置換/新立燈桿)');

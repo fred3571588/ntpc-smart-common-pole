@@ -19,8 +19,8 @@ class CreateApplyleasedTable extends Migration
             $table->float('cost')->name('租用單價');
             $table->integer('ammount_pole')->name('租用桿數');
             $table->integer('ammount_attached')->name('租用欄位數');
-            $table->datetime('lease_startdate')->name('租用起始日期');
-            $table->datetime('lease_enddate')->name('租用終止日期');
+            $table->dateTime('lease_startdate')->name('租用起始日期');
+            $table->dateTime('lease_enddate')->name('租用終止日期');
             $table->integer('lease_days')->name('租用天數');
             $table->integer('apply_id')->name('申請帳號');
             $table->string('enterprise_name',100)->name('企業名稱');

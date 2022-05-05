@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateUserLogOperationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user_log_operation', function (Blueprint $table) {
             $table->id();
-            $table->string('account')->name('帳號');
-            $table->string('password')->name('密碼');
-            $table->string('name',20)->name('使用者名稱');
-            $table->string('email',20)->name('E-mail');
+            $table->biginteger('user_id')->name('使用者帳號編號');
+            $table->string('ClientIP')->name('客戶端IP');
+            $table->string('OperationName')->name('操作名稱');
+            $table->string('RequestRoute')->name('請求');
             $table->string('memo',100)->nullable()->name('備註說明');
             $table->integer('status')->name('資料狀態');
             $table->timestamps();
@@ -34,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user_log_operation');
     }
 }

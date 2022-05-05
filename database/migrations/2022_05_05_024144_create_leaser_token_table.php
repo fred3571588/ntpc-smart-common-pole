@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateLeaserTokenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('leaser_token', function (Blueprint $table) {
             $table->id();
-            $table->string('account')->name('帳號');
-            $table->string('password')->name('密碼');
-            $table->string('name',20)->name('使用者名稱');
-            $table->string('email',20)->name('E-mail');
+            $table->biginteger('leaser_id')->name('租借者帳號編號');
+            $table->string('Token')->name('Token');
+            $table->string('ClientIP')->name('客戶端IP');
+            $table->dateTime('Token_maturity_at')->name('Token 到期時間');
+            $table->dateTime('SignOut_at')->name('登出時間');
             $table->string('memo',100)->nullable()->name('備註說明');
             $table->integer('status')->name('資料狀態');
             $table->timestamps();
@@ -34,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('leaser_token');
     }
 }
