@@ -20,9 +20,9 @@ class CreateAttachedDeviceCostTable extends Migration
             $table->string('unit',100)->name('單位');
             $table->string('memo',100)->nullable()->name('備註說明');
             $table->integer('status')->name('資料狀態');
+            $table->timestamps();
             $table->bigInteger('created_by')->name('資料建立人員');
             $table->bigInteger('updated_by')->name('最後編輯人員');
-            $table->timestamps();
         });
     }
 

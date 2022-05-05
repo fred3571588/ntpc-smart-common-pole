@@ -17,7 +17,7 @@ class CreateWillingbuildReportAttachedFileTable extends Migration
             $table->id();
             $table->biginteger('willingbuild_report_attached_id')->name('架設回報編號');
             $table->string('file_path',200)->name('存放路徑');
-            $table->string('file_name',200)->name('檔案名稱');
+            $table->string('file_name',20)->name('檔案名稱');
             $table->string('memo',100)->nullable()->name('備註說明');
             $table->integer('status')->name('資料狀態');
             $table->timestamps();

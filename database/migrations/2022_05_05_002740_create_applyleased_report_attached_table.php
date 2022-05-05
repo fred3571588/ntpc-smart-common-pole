@@ -15,7 +15,7 @@ class CreateApplyleasedReportAttachedTable extends Migration
     {
         Schema::create('applyleased_report_attached', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('applyleased_id')->name('租用申請單單號');
+            $table->bigInteger('applyleased_report_attached_id')->name('附掛回報編號');
             $table->dateTime('perform_date')->name('執行附掛日期');
             $table->string('memo',100)->nullable()->name('備註說明');
             $table->integer('status')->name('資料狀態');

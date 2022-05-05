@@ -20,7 +20,7 @@ class CreateSmartpoleTypeAttachedTable extends Migration
             $table->float('limit_voltage')->nullable()->name('電壓限制');
             $table->string('limit_volume',100)->nullable()->name('體積限制');
             $table->string('memo',100)->nullable()->name('備註說明');
-            $table->tinyInteger('status')->name('資料狀態');
+            $table->integer('status')->name('資料狀態');
             $table->timestamps();
             $table->bigInteger('created_by')->name('資料建立人員');
             $table->bigInteger('updated_by')->name('最後編輯人員');

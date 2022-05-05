@@ -24,11 +24,11 @@ class CreateApplyleasedTable extends Migration
             $table->integer('lease_days')->name('租用天數');
             $table->integer('apply_id')->name('申請帳號');
             $table->string('enterprise_name',100)->name('企業名稱');
-            $table->integer('textnumber')->name('統一編號');
+            $table->integer('taxnumber')->name('統一編號');
             $table->string('contacts_name')->name('聯絡人名稱');
             $table->string('contacts_gender')->name('性別');
             $table->string('contacts_phone')->name('連絡電話');
-            $table->string('contacts_mail')->name('E-mail');
+            $table->string('contacts_email')->name('E-mail');
             $table->integer('deposit')->name('保證金');
             $table->integer('rent')->name('租金');
             $table->integer('total')->name('總金額');

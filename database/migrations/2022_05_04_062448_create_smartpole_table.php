@@ -26,15 +26,15 @@ class CreateSmartpoleTable extends Migration
             $table->string('affiliated',20)->name('所屬機關');
             $table->dateTime('build_date')->name('架設日期');
             $table->string('mode',10)->name('架設方式(桿身置換/新立燈桿)');
-            $table->string('build_company',20)->nullable()->name('架設廠商');
+            $table->string('build_company',20)->name('架設廠商');
             $table->string('repair_company',20)->nullable()->name('維護廠商');
             $table->dateTime('repair_startdate')->nullable()->name('保固起始日期');
             $table->dateTime('repair_enddate')->nullable()->name('保固終止日期');
             $table->string('memo',100)->nullable()->name('備註說明');
-            $table->bigInteger('status')->name('資料狀態');
+            $table->integer('status')->name('資料狀態');
+            $table->timestamps();
             $table->bigInteger('created_by')->name('資料建立人員');
             $table->bigInteger('updated_by')->name('最後編輯人員');
-            $table->timestamps();
         });
     }
 

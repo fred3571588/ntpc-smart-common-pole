@@ -26,7 +26,7 @@ class CreateLeaserTable extends Migration
             $table->string('contacts_name',10)->name('聯絡人名稱');
             $table->string('contacts_gender',10)->name('性別');
             $table->string('contacts_phone')->name('連絡電話');
-            $table->string('contacts_mail',20)->name('E-mail');
+            $table->string('contacts_email',20)->name('E-mail');
             $table->string('memo',100)->nullable()->name('備註說明');
             $table->integer('status')->name('資料狀態');
             $table->timestamps();

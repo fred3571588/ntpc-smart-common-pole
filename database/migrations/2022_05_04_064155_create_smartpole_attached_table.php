@@ -24,9 +24,9 @@ class CreateSmartpoleAttachedTable extends Migration
             $table->dateTime('attach_enddate')->nullable()->name('附掛終止日期');
             $table->string('memo',100)->nullable()->name('備註說明');
             $table->integer('status')->name('資料狀態');
+            $table->timestamps();
             $table->bigInteger('created_by')->name('資料建立人員');
             $table->bigInteger('updated_by')->name('最後編輯人員');
-            $table->timestamps();
         });
     }
 
