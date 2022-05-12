@@ -36,6 +36,6 @@ class CreateLeaserReviewTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leaser_reviews');
+        Schema::dropIfExists('leaser_review');
     }
 }
