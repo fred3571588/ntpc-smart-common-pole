@@ -17,6 +17,7 @@ class CreateSmartpoleTable extends Migration
             $table->id();
             $table->integer('smartpole_type_id')->name('共桿型號編號');
             $table->integer('area_id')->name('場域編號');
+            $table->integer('smart_ammeter_id')->name('智慧電錶編號');
             $table->string('district',10)->nullable()->name('行政區');
             $table->string('village',10)->nullable()->name('里別');
             $table->string('road',10)->nullable()->name('路段');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttachedDeviceCostTable extends Migration
+class CreateLeaseRequisitionReportAttachedPhotoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAttachedDeviceCostTable extends Migration
      */
     public function up()
     {
-        Schema::create('attached_device_cost', function (Blueprint $table) {
+        Schema::create('leaseRequisition_report_attached_photo', function (Blueprint $table) {
             $table->id();
-            $table->integer('attached_device_id')->name('附掛設備類型編號');
-            $table->float('cost')->name('出租單價');
-            $table->string('unit',100)->name('單位');
+            $table->biginteger('leaseRequisition_report_attached_id')->name('架設回報編號');
+            $table->string('photo_path',200)->name('照片存放路徑');
+            $table->string('photo_name',20)->name('照片名稱');
             $table->string('memo',100)->nullable()->name('備註說明');
             $table->integer('status')->name('資料狀態');
             $table->timestamps();
@@ -33,6 +33,6 @@ class CreateAttachedDeviceCostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attached_device_cost');
+        Schema::dropIfExists('leaseRequisition_report_attached_photo');
     }
 }
