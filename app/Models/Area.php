@@ -10,4 +10,9 @@ class Area extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function smartpole()
+    {
+        return $this->hasMany(SmartPole::class);
+    }
 }

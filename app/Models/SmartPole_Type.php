@@ -10,4 +10,9 @@ class SmartPole_Type extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function smartpole()
+    {
+        return $this->belongsTo(SmartPole::class);
+    }
 }
