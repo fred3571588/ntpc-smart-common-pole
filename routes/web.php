@@ -24,9 +24,9 @@ Route::get('/redirect', function (Request $request) {
     $request->session()->put('state', $state = Str::random(40));
     $request->session()->put('nonce', $nonce = Str::random(40));
     $query = http_build_query([
+        'response_type' => 'code',
         'client_id' => 'MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',
         'redirect_uri' => 'http://211.72.231.157/ntpc_SmartPole/callback',
-        'response_type' => 'code',
         'scope' => 'openid profile personal email address phone',
         'state' => $state,
         'nonce' => $nonce,
