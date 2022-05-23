@@ -16,6 +16,8 @@ class CreateAreaTable extends Migration
         Schema::create('area', function (Blueprint $table) {
             $table->id();
             $table->string('name',30)->comment('場域名稱');
+            $table->string('code',30)->comment('場域編碼');
+            $table->string('administrative_area',30)->comment('行政區');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');
             $table->timestamps();
