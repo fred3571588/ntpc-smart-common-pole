@@ -22,22 +22,25 @@ Route::get('/', function () {
 
 Route::get('/redirect', function (Request $request) {
     $request->session()->put('state', $state = Str::random(40));
+    $request->session()->put('nonce', $nonce = Str::random(40));
     $query = http_build_query([
         'client_id' => 'MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',
         'redirect_uri' => 'http://211.72.231.157/ntpc_SmartPole/callback',
         'response_type' => 'code',
-        'scope' => '*',
+        'scope' => 'openid profile personal email address phone',
         'state' => $state,
+        'nonce' => $nonce,
     ]);
     return redirect('https://openid.ntpc.gov.tw/authorize?'.$query);
 });
 
 Route::get('/callback', function (Request $request) {
-    $state = $request->session()->pull('state');
-    $response = Http::asForm()->post('https://openid.ntpc.gov.tw/token', [
+    $response = Http::withHeaders([
+        'Authorization' => 'Basic ' . base64_encode('MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz;U0PbvgUuicqosehtAMB56u9Rcvroc1R_WZcrO02q1zU'),
+    ])->post('https://openid.ntpc.gov.tw/token', [
         'grant_type' => 'authorization_code',
-        'client_id' => 'MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',
-        'client_secret' => 'U0PbvgUuicqosehtAMB56u9Rcvroc1R_WZcrO02q1zU',
+        // 'client_id' => 'MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',
+        // 'client_secret' => 'U0PbvgUuicqosehtAMB56u9Rcvroc1R_WZcrO02q1zU',
         'redirect_uri' => 'http://211.72.231.157/ntpc_SmartPole/callback',
         'code' => $request->code,
     ]);
