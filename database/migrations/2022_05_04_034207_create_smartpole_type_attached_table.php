@@ -15,15 +15,15 @@ class CreateSmartpoleTypeAttachedTable extends Migration
     {
         Schema::create('smartpole_type_attached', function (Blueprint $table) {
             $table->id();
-            $table->integer('smartpole_type_id')->name('共桿型號編號');
-            $table->float('limit_weight')->nullable()->name('負重限制(公斤)');
-            $table->float('limit_voltage')->nullable()->name('電壓限制');
-            $table->string('limit_volume',100)->nullable()->name('體積限制');
-            $table->string('memo',100)->nullable()->name('備註說明');
-            $table->integer('status')->name('資料狀態');
+            $table->integer('smartpole_type_id')->comment('共桿型號編號');
+            $table->float('limit_weight')->nullable()->comment('負重限制(公斤)');
+            $table->float('limit_voltage')->nullable()->comment('電壓限制');
+            $table->string('limit_volume',100)->nullable()->comment('體積限制');
+            $table->string('memo',100)->nullable()->comment('備註說明');
+            $table->integer('status')->comment('資料狀態');
             $table->timestamps();
-            $table->bigInteger('created_by')->name('資料建立人員');
-            $table->bigInteger('updated_by')->name('最後編輯人員');
+            $table->bigInteger('created_by')->comment('資料建立人員');
+            $table->bigInteger('updated_by')->comment('最後編輯人員');
         });
     }
 

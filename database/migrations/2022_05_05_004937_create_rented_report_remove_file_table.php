@@ -15,14 +15,14 @@ class CreateRentedReportRemoveFileTable extends Migration
     {
         Schema::create('rented_report_remove_file', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_report_remove_id')->name('拆卸回報編號');
-            $table->string('file_path',200)->name('存放路徑');
-            $table->string('file_name',20)->name('檔案名稱');
-            $table->string('memo',100)->nullable()->name('備註說明');
-            $table->integer('status')->name('資料狀態');
+            $table->bigInteger('rented_report_remove_id')->comment('拆卸回報編號');
+            $table->string('file_path',200)->comment('存放路徑');
+            $table->string('file_name',20)->comment('檔案名稱');
+            $table->string('memo',100)->nullable()->comment('備註說明');
+            $table->integer('status')->comment('資料狀態');
             $table->timestamps();
-            $table->bigInteger('created_by')->name('資料建立人員');
-            $table->bigInteger('updated_by')->name('最後編輯人員');
+            $table->bigInteger('created_by')->comment('資料建立人員');
+            $table->bigInteger('updated_by')->comment('最後編輯人員');
         });
     }
 

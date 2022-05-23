@@ -15,15 +15,15 @@ class CreateRentedExtendTable extends Migration
     {
         Schema::create('rented_extend', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_id')->name('出租申請單單號');
-            $table->dateTime('extend_date')->name('展延日期');
-            $table->integer('extend_days')->name('展延天數');
-            $table->integer('extend_rent')->name('展延租金');
-            $table->string('memo',100)->nullable()->name('備註說明');
-            $table->integer('status')->name('資料狀態');
+            $table->bigInteger('rented_id')->comment('出租申請單單號');
+            $table->dateTime('extend_date')->comment('展延日期');
+            $table->integer('extend_days')->comment('展延天數');
+            $table->integer('extend_rent')->comment('展延租金');
+            $table->string('memo',100)->nullable()->comment('備註說明');
+            $table->integer('status')->comment('資料狀態');
             $table->timestamps();
-            $table->bigInteger('created_by')->name('資料建立人員');
-            $table->bigInteger('updated_by')->name('最後編輯人員');
+            $table->bigInteger('created_by')->comment('資料建立人員');
+            $table->bigInteger('updated_by')->comment('最後編輯人員');
         });
     }
 

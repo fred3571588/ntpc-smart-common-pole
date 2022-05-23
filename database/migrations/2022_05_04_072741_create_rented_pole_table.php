@@ -15,15 +15,15 @@ class CreateRentedPoleTable extends Migration
     {
         Schema::create('rented_pole', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_id')->name('出租申請單位號');
-            $table->bigInteger('smartpole_id')->name('共桿編號');
-            $table->bigInteger('SNSL')->name('路燈編號');
-            $table->integer('amount_attached')->name('出租欄位數量');
-            $table->string('memo',100)->nullable()->name('備註說明');
-            $table->integer('status')->name('資料狀態');
+            $table->bigInteger('rented_id')->comment('出租申請單位號');
+            $table->bigInteger('smartpole_id')->comment('共桿編號');
+            $table->bigInteger('SNSL')->comment('路燈編號');
+            $table->integer('amount_attached')->comment('出租欄位數量');
+            $table->string('memo',100)->nullable()->comment('備註說明');
+            $table->integer('status')->comment('資料狀態');
             $table->timestamps();
-            $table->bigInteger('created_by')->name('資料建立人員');
-            $table->bigInteger('updated_by')->name('最後編輯人員');
+            $table->bigInteger('created_by')->comment('資料建立人員');
+            $table->bigInteger('updated_by')->comment('最後編輯人員');
         });
     }
 

@@ -15,15 +15,15 @@ class CreateLeaseRequisitionPoleTable extends Migration
     {
         Schema::create('leaseRequisition_pole', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('leaseRequisition_id')->name('架設意願表單號');
-            $table->biginteger('SNSL')->name('路燈編號');
-            $table->decimal('Lat',10,8)->name('緯度');
-            $table->decimal('Lng',10,8)->name('經度');
-            $table->string('memo',100)->nullable()->name('備註說明');
-            $table->integer('status')->name('資料狀態');
+            $table->biginteger('leaseRequisition_id')->comment('架設意願表單號');
+            $table->biginteger('SNSL')->comment('路燈編號');
+            $table->decimal('Lat',10,8)->comment('緯度');
+            $table->decimal('Lng',10,8)->comment('經度');
+            $table->string('memo',100)->nullable()->comment('備註說明');
+            $table->integer('status')->comment('資料狀態');
             $table->timestamps();
-            $table->bigInteger('created_by')->name('資料建立人員');
-            $table->bigInteger('updated_by')->name('最後編輯人員');
+            $table->bigInteger('created_by')->comment('資料建立人員');
+            $table->bigInteger('updated_by')->comment('最後編輯人員');
         });
     }
 
