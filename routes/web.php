@@ -31,13 +31,13 @@ Route::get('/redirect', function (Request $request) {
         'state' => $state,
         'nonce' => $nonce,
     ]);
-    return redirect('https://openid.ntpc.gov.tw/authorize?'.$query);
+    return redirect('https://openidtest.ntpc.gov.tw/authorize?'.$query);
 });
 
 Route::get('/callback', function (Request $request) {
     $response = Http::withHeaders([
         'Authorization' => 'Basic ' . base64_encode('MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz;U0PbvgUuicqosehtAMB56u9Rcvroc1R_WZcrO02q1zU'),
-    ])->post('https://openid.ntpc.gov.tw/token', [
+    ])->post('https://openidtest.ntpc.gov.tw/token', [
         'grant_type' => 'authorization_code',
         // 'client_id' => 'MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',
         // 'client_secret' => 'U0PbvgUuicqosehtAMB56u9Rcvroc1R_WZcrO02q1zU',
