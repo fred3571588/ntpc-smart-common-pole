@@ -10,4 +10,9 @@ class Rented_Extend extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function rented()
+    {
+        return $this->belongsTo(Rented::class);
+    }
 }

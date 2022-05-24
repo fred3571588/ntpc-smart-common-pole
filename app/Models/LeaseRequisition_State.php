@@ -10,4 +10,14 @@ class LeaseRequisition_State extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function leaseRequisition()
+    {
+        return $this->belongsTo(leaseRequisition::class);
+    }
+
+    public function record()
+    {
+        return $this->hasMany(LeaseRequisition_State_Record::class);
+    }
 }

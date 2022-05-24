@@ -10,4 +10,9 @@ class SmartPole_Photo extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function smartpole()
+    {
+        return $this->belongsTo(SmartPole::class);
+    }
 }

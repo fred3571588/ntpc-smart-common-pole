@@ -10,4 +10,14 @@ class SmartPole_Attached extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function smartpole()
+    {
+        return $this->belongsTo(SmartPole::class);
+    }
+
+    public function device()
+    {
+        return $this->hasOne(AttachedDevice::class);
+    }
 }

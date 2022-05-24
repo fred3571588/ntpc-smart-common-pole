@@ -10,4 +10,9 @@ class Rented_State_Record extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function rented_state()
+    {
+        return $this->belongsTo(Rented_State::class);
+    }
 }

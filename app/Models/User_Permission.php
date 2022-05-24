@@ -10,4 +10,9 @@ class User_Permission extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

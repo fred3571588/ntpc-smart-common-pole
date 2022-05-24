@@ -10,4 +10,9 @@ class Rented_Report_Remove_File extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function report_remove()
+    {
+        return $this->belongsTo(Rented_Report_Remove::class);
+    }
 }

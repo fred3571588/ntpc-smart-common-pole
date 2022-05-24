@@ -10,4 +10,9 @@ class AttachedDevice_Cost extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function device()
+    {
+        return $this->belongsTo(AttachedDevice::class);
+    }
 }

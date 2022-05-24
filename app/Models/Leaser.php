@@ -10,4 +10,25 @@ class Leaser extends Model
     use HasFactory;
 
     protected $guard = [];
+
+
+    public function review()
+    {
+        return $this->hasMany(LeaserReview::class);
+    }
+
+    public function token()
+    {
+        return $this->hasOne(LeaserToken::class);
+    }
+
+    public function rented()
+    {
+        return $this->hasMany(Rented::class);
+    }
+
+    public function leaseRequisition()
+    {
+        return $this->hasMany(LeaseRequisition::class);
+    }
 }

@@ -28,4 +28,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function logOperation()
+    {
+        return $this->hasMany(User_LogOperation::class);
+    }
+
+    public function permission()
+    {
+        return $this->hasOne(User_Permission::class);
+    }
+
+    public function token()
+    {
+        return $this->hasOne(User_Token::class);
+    }
+
+    public function announcement()
+    {
+        return $this->hasMany(Announcement::class);
+    }
 }

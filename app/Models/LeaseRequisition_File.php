@@ -10,4 +10,9 @@ class LeaseRequisition_File extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function leaseRequisition()
+    {
+        return $this->belongsTo(LeaseRequisition::class);
+    }
 }
