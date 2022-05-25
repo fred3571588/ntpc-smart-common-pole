@@ -21,8 +21,8 @@ Route::get('/', function () {
 });
 
 Route::get('/redirect', function (Request $request) {
-    $request->session()->put('state', $state = Str::random(40));
-    $request->session()->put('nonce', $nonce = Str::random(40));
+    $state = Str::random(40);
+    $nonce = Str::random(40);
     $query = http_build_query([
         'response_type' => 'code',
         'client_id' => 'MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',
