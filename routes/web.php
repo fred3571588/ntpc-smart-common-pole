@@ -21,15 +21,17 @@ Route::get('/', function () {
 });
 
 Route::get('/redirect', function (Request $request) {
-    $request->session()->put('state', $state = Str::random(40));
-    $request->session()->put('nonce', $nonce = Str::random(40));
+    $state = Str::random(43);
+    $nonce = Str::random(43);
+    // $request->session()->put('state', $state = Str::random(43));
+    // $request->session()->put('nonce', $nonce = Str::random(43));
     $query = http_build_query([
-        'response_type' => 'code',
-        'client_id' => 'MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',
-        'redirect_uri' => 'http://211.72.231.157/ntpc_SmartPole/callback',
-        'scope' => 'openid profile personal email address phone',
-        'state' => $state,
-        'nonce' => $nonce,
+        'response_type' => urlencode(mb_convert_encoding('code',"UTF-8")),
+        'client_id' => urlencode(mb_convert_encoding('MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',"UTF-8")),
+        'redirect_uri' => urlencode(mb_convert_encoding('http://211.72.231.157/ntpc_SmartPole/callback',"UTF-8")),
+        'scope' => urlencode(mb_convert_encoding('openid profile personal email address phone',"UTF-8")),
+        'state' => urlencode(mb_convert_encoding($state,"UTF-8")),
+        'nonce' => urlencode(mb_convert_encoding($nonce,"UTF-8")),
     ]);
     return redirect('https://openidtest.ntpc.gov.tw/authorize?'.$query);
 });
