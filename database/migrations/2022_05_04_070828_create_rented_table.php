@@ -22,7 +22,6 @@ class CreateRentedTable extends Migration
             $table->dateTime('rent_startdate')->comment('出租起始日期');
             $table->dateTime('rent_enddate')->comment('出租終止日期');
             $table->integer('rent_days')->comment('出租天數');
-            // $table->integer('apply_id')->comment('申請帳號');
             $table->string('enterprise_name',100)->comment('企業名稱');
             $table->integer('taxnumber')->comment('統一編號');
             $table->string('contacts_name',10)->comment('聯絡人名稱');
