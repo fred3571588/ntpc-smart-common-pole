@@ -15,7 +15,6 @@ class CreateRentedReportAttachedFileTable extends Migration
     {
         Schema::create('rented_report_attached_file', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_report_attached_id')->comment('附掛回報編號');
             $table->string('file_path',200)->comment('存放路徑');
             $table->string('file_name',20)->comment('檔案名稱');
             $table->string('memo',100)->nullable()->comment('備註說明');

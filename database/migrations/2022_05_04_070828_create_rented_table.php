@@ -15,7 +15,6 @@ class CreateRentedTable extends Migration
     {
         Schema::create('rented', function (Blueprint $table) {
             $table->id();
-            $table->integer('attached_device_id')->comment('附掛設備類型編號');
             $table->float('cost')->comment('出租單價');
             $table->integer('amount_pole')->comment('出租桿數');
             $table->integer('amount_attached')->comment('出租欄位數');
@@ -31,7 +30,6 @@ class CreateRentedTable extends Migration
             $table->integer('deposit')->comment('保證金');
             $table->integer('rent')->comment('租金');
             $table->integer('total')->comment('總金額');
-            $table->integer('current_state_id')->comment('當前狀態');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');
             $table->timestamps();

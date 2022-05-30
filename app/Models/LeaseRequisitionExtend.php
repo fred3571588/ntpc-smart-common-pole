@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rented_Extend extends Model
+class LeaseRequisitionExtend extends Model
 {
     use HasFactory;
 
     protected $guard = [];
 
-    public function rented()
+    public function leaseRequisition()
     {
-        return $this->belongsTo(Rented::class);
+        return $this->belongsTo(LeaseRequisition::class);
     }
 }

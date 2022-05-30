@@ -15,8 +15,7 @@ class CreateLeaseRequisitionStateTable extends Migration
     {
         Schema::create('leaseRequisition_state', function (Blueprint $table) {
             $table->id();
-            $table->string('leaseRequisition_name',20)->comment('架設意願表單號_申請');
-            $table->string('check_name',20)->comment('架設意願表單號_審核');
+            $table->string('check_name',20)->comment('承租申請單單號_審核');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');
             $table->timestamps();

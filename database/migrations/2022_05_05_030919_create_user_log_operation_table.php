@@ -16,9 +16,9 @@ class CreateUserLogOperationTable extends Migration
         Schema::create('user_log_operation', function (Blueprint $table) {
             $table->id();
             $table->biginteger('user_id')->comment('使用者帳號編號');
-            $table->string('ClientIP')->comment('客戶端IP');
-            $table->string('OperationName')->comment('操作名稱');
-            $table->string('RequestRoute')->comment('請求');
+            $table->string('clientIP')->comment('客戶端IP');
+            $table->string('operation_name')->comment('操作名稱');
+            $table->string('request_route')->comment('請求');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');
             $table->timestamps();

@@ -15,8 +15,6 @@ class CreateRentedPoleTable extends Migration
     {
         Schema::create('rented_pole', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_id')->comment('出租申請單位號');
-            $table->bigInteger('smartpole_id')->comment('共桿編號');
             $table->bigInteger('SNSL')->comment('路燈編號');
             $table->integer('amount_attached')->comment('出租欄位數量');
             $table->string('memo',100)->nullable()->comment('備註說明');

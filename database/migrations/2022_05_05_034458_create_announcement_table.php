@@ -16,6 +16,7 @@ class CreateAnnouncementTable extends Migration
         Schema::create('announcement', function (Blueprint $table) {
             $table->id();
             $table->dateTime('announcement_at')->comment('公告日期');
+            $table->char('place')->comment('公告放置(A or B)');
             $table->string('content')->comment('內容');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');

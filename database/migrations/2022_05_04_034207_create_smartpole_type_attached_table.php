@@ -15,7 +15,6 @@ class CreateSmartpoleTypeAttachedTable extends Migration
     {
         Schema::create('smartpole_type_attached', function (Blueprint $table) {
             $table->id();
-            $table->integer('smartpole_type_id')->comment('共桿型號編號');
             $table->float('limit_weight')->nullable()->comment('負重限制(公斤)');
             $table->float('limit_voltage')->nullable()->comment('電壓限制');
             $table->string('limit_volume',100)->nullable()->comment('體積限制');
