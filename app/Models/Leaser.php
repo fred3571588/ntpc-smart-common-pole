@@ -14,7 +14,7 @@ class Leaser extends Model
 
     public function review()
     {
-        return $this->hasMany(LeaserReview::class);
+        return $this->hasOne(LeaserReview::class);
     }
 
     public function token()

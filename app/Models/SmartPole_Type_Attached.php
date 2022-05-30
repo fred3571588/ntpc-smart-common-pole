@@ -11,18 +11,14 @@ class SmartPole_Type_Attached extends Model
 
     protected $guard = [];
 
-    public function smartpole()
+    public function smartpole_type()
     {
-        return $this->belongsTo(Smartpole::class);
-    }
-
-    public function file()
-    {
-        return $this->hasMany(SmartPole_Type_File::class);
+        return $this->belongsTo(SmartPole_Type::class);
     }
 
     public function device()
     {
-        return $this->hasMany(SmartPole_Type_Attached_Device::class);
+        return $this->hasOne(SmartPole_Type_Attached_Device::class);
     }
+
 }

@@ -10,4 +10,9 @@ class Document extends Model
     use HasFactory;
 
     protected $guard = [];
+
+    public function announcement()
+    {
+        return $this->belongsTo(Announcement::class);
+    }
 }

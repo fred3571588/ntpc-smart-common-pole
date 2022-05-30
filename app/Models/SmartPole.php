@@ -11,6 +11,11 @@ class SmartPole extends Model
 
     protected $guard = [];
 
+    public function rented_pole()
+    {
+        return $this->belongsTo(Rented_Pole::class);
+    }
+
     public function area()
     {
         return $this->belongsTo(Area::class);
@@ -28,10 +33,5 @@ class SmartPole extends Model
     public function attached()
     {
         return $this->hasMany(SmartPole_Attached::class);
-    }
-
-    public function type_attached()
-    {
-        return $this->hasMany(SmartPole_Type_Attached::class);
     }
 }
