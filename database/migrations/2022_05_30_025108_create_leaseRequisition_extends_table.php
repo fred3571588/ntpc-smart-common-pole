@@ -23,7 +23,6 @@ return new class extends Migration
             $table->timestamps();
             $table->bigInteger('created_by')->comment('資料建立人員');
             $table->bigInteger('updated_by')->comment('最後編輯人員');
-            $table->timestamps();
         });
     }
 
