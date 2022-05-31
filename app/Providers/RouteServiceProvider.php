@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
-    // protected $namespace = 'App\\Http\\Controllers';
+    protected $namespace = 'App\\Http\\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -36,17 +36,57 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
-
-        $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
-
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
+        // 類庫重新命名
+        $RouteServiceProvider = $this;
+        // 載入router
+        $this->routes(function () use ($RouteServiceProvider) {
+            // 預設token
+            $RouteServiceProvider->boot_def();
+            // 自訂route-每次呼叫都需要檢查token
+            Route::prefix('api')->middleware('auth:sanctum', 'api')->group(function () use ($RouteServiceProvider) {
+                $RouteServiceProvider->boot_api();
+            });
         });
+    }
+
+    /**
+     * boot_def
+     * 預設的API-不需通過登入驗證的API
+     */
+    public function boot_def()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * boot_api
+     * 為規劃的API表-需登入才能使用
+     */
+    public function boot_api()
+    {
+        $names = [
+            //登入API
+            'A00_Login',
+        ];
+        foreach ($names as $name) {
+            if (substr($name, 0, 3) === 'A00') {
+                Route::prefix(substr($name, 0, 3))
+                    ->namespace($this->namespace . '\\' . $name)
+                    ->group(base_path(join('/', ['routes', 'api', $name . '_Api.php'])));
+            } else {
+                Route::prefix(substr($name, 0, 3))
+                    ->middleware('throttle:api')
+                    ->namespace($this->namesapce . '\\' . $name)
+                    ->group(base_path(join('/', ['routes', 'api', $name . '_Api.php'])));
+            }
+        }
     }
 
     /**
