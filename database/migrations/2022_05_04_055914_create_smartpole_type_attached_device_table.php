@@ -15,8 +15,6 @@ class CreateSmartpoleTypeAttachedDeviceTable extends Migration
     {
         Schema::create('smartpole_type_attached_device', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('smartpole_type_attached_id')->comment('桿型欄位編號');
-            $table->integer('attached_device_id')->comment('附掛設備類型編號');
             $table->integer('amount')->comment('可附掛數量');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');

@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class Loop extends Model
 {
     use HasFactory;
 
     protected $guard = [];
 
-    public function announcement()
+    public function switchbox()
     {
-        return $this->belongsTo(Announcement::class);
+        return $this->belongsTo(SwitchBox::class);
     }
 }

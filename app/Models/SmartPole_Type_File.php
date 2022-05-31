@@ -11,8 +11,8 @@ class SmartPole_Type_File extends Model
 
     protected $guard = [];
 
-    public function type_attached()
+    public function smartpole_type()
     {
-        return $this->belongsTo(SmartPole_Type_Attached::class);
+        return $this->belongsTo(SmartPole_Type::class);
     }
 }

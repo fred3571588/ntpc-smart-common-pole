@@ -15,7 +15,6 @@ class CreateSmartpoleTypeFileTable extends Migration
     {
         Schema::create('smartpole_type_file', function (Blueprint $table) {
             $table->id();
-            $table->integer('smartpole_type_id')->comment('共桿型號編號');
             $table->string('file_path',200)->comment('存放路徑');
             $table->string('file_name',20)->comment('檔案名稱');
             $table->string('memo',100)->nullable()->comment('備註說明');

@@ -21,11 +21,6 @@ class Rented extends Model
         return $this->hasOne(Rented_State::class);
     }
 
-    public function extend()
-    {
-        return $this->hasOne(Rented_Extend::class);
-    }
-
     public function file()
     {
         return $this->hasMany(Rented_File::class);

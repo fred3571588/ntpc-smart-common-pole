@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email',20)->comment('E-mail');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');
+            $table->boolean('active')->comment('帳號啟用');
             $table->timestamps();
             $table->bigInteger('created_by')->comment('資料建立人員');
             $table->bigInteger('updated_by')->comment('最後編輯人員');

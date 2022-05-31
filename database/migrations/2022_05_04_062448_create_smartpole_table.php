@@ -15,9 +15,6 @@ class CreateSmartpoleTable extends Migration
     {
         Schema::create('smartpole', function (Blueprint $table) {
             $table->id();
-            $table->integer('smartpole_type_id')->comment('共桿型號編號');
-            $table->integer('area_id')->comment('場域編號');
-            $table->integer('smart_ammeter_id')->comment('智慧電錶編號');
             $table->string('district',10)->nullable()->comment('行政區');
             $table->string('village',10)->nullable()->comment('里別');
             $table->string('road',10)->nullable()->comment('路段');

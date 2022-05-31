@@ -15,7 +15,6 @@ class CreateRentedReportRemovePhotoTable extends Migration
     {
         Schema::create('rented_report_remove_photo', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_report_remove_id')->comment('拆卸回報編號');
             $table->string('photo_path',200)->comment('照片存放路徑');
             $table->string('photo_name',20)->comment('照片名稱');
             $table->string('memo',100)->nullable()->comment('備註說明');

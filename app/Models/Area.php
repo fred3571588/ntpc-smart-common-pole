@@ -15,4 +15,9 @@ class Area extends Model
     {
         return $this->hasMany(SmartPole::class);
     }
+
+    public function switchbox()
+    {
+        return $this->hasMany(SwitchBox::class);
+    }
 }

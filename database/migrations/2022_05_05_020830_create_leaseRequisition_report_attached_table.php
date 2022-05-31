@@ -15,7 +15,6 @@ class CreateLeaseRequisitionReportAttachedTable extends Migration
     {
         Schema::create('leaseRequisition_report_attached', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('leaseRequisition_id')->comment('架設意願表單號');
             $table->dateTime('build_date')->comment('執行架設日期');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');

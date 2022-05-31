@@ -15,7 +15,6 @@ class CreateLeaseRequisitionReportAttachedPhotoTable extends Migration
     {
         Schema::create('leaseRequisition_report_attached_photo', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('leaseRequisition_report_attached_id')->comment('架設回報編號');
             $table->string('photo_path',200)->comment('照片存放路徑');
             $table->string('photo_name',20)->comment('照片名稱');
             $table->string('memo',100)->nullable()->comment('備註說明');

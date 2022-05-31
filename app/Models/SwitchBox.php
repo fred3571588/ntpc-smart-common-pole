@@ -5,14 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class SwitchBox extends Model
 {
     use HasFactory;
 
     protected $guard = [];
 
-    public function announcement()
+    public function loop()
     {
-        return $this->belongsTo(Announcement::class);
+        return $this->hasMany(Loop::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
     }
 }

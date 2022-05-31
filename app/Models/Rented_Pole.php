@@ -15,4 +15,9 @@ class Rented_Pole extends Model
     {
         return $this->belongsTo(Rented::class);
     }
+
+    public function smartpole()
+    {
+        return $this->hasOne(Smartpole::class);
+    }
 }

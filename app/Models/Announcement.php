@@ -16,4 +16,9 @@ class Announcement extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function document()
+    {
+        return $this->hasMany(Document::class);
+    }
+
 }

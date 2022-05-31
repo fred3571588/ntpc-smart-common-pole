@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRentedExtendTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateRentedExtendTable extends Migration
      */
     public function up()
     {
-        Schema::create('rented_extend', function (Blueprint $table) {
+        Schema::create('leaseRequisition_extend', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_id')->comment('出租申請單單號');
             $table->dateTime('extend_date')->comment('展延日期');
             $table->integer('extend_days')->comment('展延天數');
             $table->integer('extend_rent')->comment('展延租金');
@@ -34,6 +33,6 @@ class CreateRentedExtendTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rented_extend');
+        Schema::dropIfExists('leaseRequisition_extend');
     }
-}
+};

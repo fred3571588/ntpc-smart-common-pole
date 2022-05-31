@@ -15,7 +15,6 @@ class CreateRentedReportAttachedTable extends Migration
     {
         Schema::create('rented_report_attached', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_id')->comment('附掛回報編號');
             $table->dateTime('perform_date')->comment('執行附掛日期');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');

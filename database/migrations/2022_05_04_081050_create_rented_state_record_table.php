@@ -15,8 +15,6 @@ class CreateRentedStateRecordTable extends Migration
     {
         Schema::create('rented_state_record', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_id')->comment('出租申請單單號');
-            $table->integer('rented_state_id')->comment('出租案件狀態');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');
             $table->timestamps();

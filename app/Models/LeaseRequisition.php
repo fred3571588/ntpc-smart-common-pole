@@ -40,4 +40,9 @@ class LeaseRequisition extends Model
     {
         return $this->hasMany(SmartPole::class);
     }
+
+    public function extend()
+    {
+        return $this->hasOne(LeaseRequisitionExtend::class);
+    }
 }

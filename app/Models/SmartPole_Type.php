@@ -15,4 +15,14 @@ class SmartPole_Type extends Model
     {
         return $this->belongsTo(SmartPole::class);
     }
+
+    public function file()
+    {
+        return $this->hasMany(SmartPole_Type_File::class);
+    }
+
+    public function attached()
+    {
+        return $this->hasMany(SmartPole_Type_Attached::class);
+    }
 }

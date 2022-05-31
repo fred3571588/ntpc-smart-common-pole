@@ -15,7 +15,6 @@ class CreateRentedReportRemoveTable extends Migration
     {
         Schema::create('rented_report_remove', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rented_id')->comment('出租申請單單號');
             $table->dateTime('remove_date')->comment('執行拆卸日期');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');
