@@ -74,16 +74,17 @@ class RouteServiceProvider extends ServiceProvider
         $names = [
             //登入API
             'A00_Login',
+            'B00_System_manage'
         ];
         foreach ($names as $name) {
-            if (substr($name, 0, 3) === 'A00') {
+            if (substr($name, 0, 3) === 'B00') {
                 Route::prefix(substr($name, 0, 3))
                     ->namespace($this->namespace . '\\' . $name)
                     ->group(base_path(join('/', ['routes', 'api', $name . '_Api.php'])));
             } else {
                 Route::prefix(substr($name, 0, 3))
                     ->middleware('throttle:api')
-                    ->namespace($this->namesapce . '\\' . $name)
+                    ->namespace($this->namespace . '\\' . $name)
                     ->group(base_path(join('/', ['routes', 'api', $name . '_Api.php'])));
             }
         }
