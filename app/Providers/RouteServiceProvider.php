@@ -74,10 +74,11 @@ class RouteServiceProvider extends ServiceProvider
         $names = [
             //登入API
             'A00_Login',
-            'B00_System_manage'
+            'B00_System_manage',
+            'B01_Announcement_manage'
         ];
         foreach ($names as $name) {
-            if (substr($name, 0, 3) === 'B00') {
+            if (substr($name, 0, 3) === 'B01') {
                 Route::prefix(substr($name, 0, 3))
                     ->namespace($this->namespace . '\\' . $name)
                     ->group(base_path(join('/', ['routes', 'api', $name . '_Api.php'])));
