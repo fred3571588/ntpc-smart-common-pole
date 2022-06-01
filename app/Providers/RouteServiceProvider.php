@@ -43,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
             // 預設token
             $RouteServiceProvider->boot_def();
             // 自訂route-每次呼叫都需要檢查token
-            Route::prefix('api')->middleware('auth:sanctum', 'api')->group(function () use ($RouteServiceProvider) {
+            Route::prefix('api')->group(function () use ($RouteServiceProvider) {
                 $RouteServiceProvider->boot_api();
             });
         });
