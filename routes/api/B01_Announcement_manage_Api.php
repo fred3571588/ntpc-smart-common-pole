@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\B01_Announcement_Manage_Controller;
+use App\Http\Controllers\B01_Announcement_Manage_controller;
 use App\Http\Resources\AnnouncementResource;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
@@ -12,5 +12,5 @@ Route::get('/announcement',function(){
     return AnnouncementResource::collection(Announcement::all());
 });
 
-Route::resource('announcements',B01_Announcement_Manage_Controller::class);
+Route::resource('announcements',B01_Announcement_Manage_controller::class);
 

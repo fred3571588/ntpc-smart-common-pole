@@ -13,23 +13,15 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The path to the "home" route for your application.
      *
-     * This is used by Laravel authentication to redirect users after login.
+     * Typically, users are redirected here after authentication.
      *
      * @var string
      */
     public const HOME = '/home';
 
-    /**
-     * The controller namespace for the application.
-     *
-     * When present, controller route declarations will automatically be prefixed with this namespace.
-     *
-     * @var string|null
-     */
-    protected $namespace = 'App\\Http\\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
+     * Define your route model bindings, pattern filters, and other route configuration.
      *
      * @return void
      */
@@ -49,14 +41,9 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * boot_def
-     * 預設的API-不需通過登入驗證的API
-     */
     public function boot_def()
     {
         Route::prefix('api')
-            ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
 
@@ -65,31 +52,37 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web.php'));
     }
 
-    /**
-     * boot_api
-     * 為規劃的API表-需登入才能使用
-     */
     public function boot_api()
     {
         $names = [
             //登入API
             'A00_Login',
-            'B00_System_manage',
             'B01_Announcement_manage'
         ];
         foreach ($names as $name) {
-            if (substr($name, 0, 3) === 'B01') {
+            if (substr($name, 0, 3) === '999') {
                 Route::prefix(substr($name, 0, 3))
                     ->namespace($this->namespace . '\\' . $name)
                     ->group(base_path(join('/', ['routes', 'api', $name . '_Api.php'])));
             } else {
                 Route::prefix(substr($name, 0, 3))
-                    ->middleware('throttle:api')
                     ->namespace($this->namespace . '\\' . $name)
                     ->group(base_path(join('/', ['routes', 'api', $name . '_Api.php'])));
             }
         }
     }
+
+        // $this->configureRateLimiting();
+
+        // $this->routes(function () {
+        //     Route::middleware('api')
+        //         ->prefix('api')
+        //         ->group(base_path('routes/api.php'));
+
+        //     Route::middleware('web')
+        //         ->group(base_path('routes/web.php'));
+        // });
+
 
     /**
      * Configure the rate limiters for the application.
@@ -99,7 +92,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function configureRateLimiting()
     {
         RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }
 }

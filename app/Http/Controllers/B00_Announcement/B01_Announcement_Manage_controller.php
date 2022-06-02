@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\B00_announcement;
+use App\Http\Controllers\Controller;
+
 
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 
-class B01_Announcement_Manage_Controller extends Controller
+class B01_Announcement_Manage_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -58,7 +60,7 @@ class B01_Announcement_Manage_Controller extends Controller
     {
         $announcement = Announcement::firstOrFail($id);
 
-        return $announcement;
+        return response()->JsonWithCode($announcement);
     }
 
     /**
@@ -94,6 +96,8 @@ class B01_Announcement_Manage_Controller extends Controller
         ]);
 
         $announcement->save();
+
+        return response()->JsonWithCode(["msg" => "success"], 200);
     }
 
     /**
@@ -108,5 +112,7 @@ class B01_Announcement_Manage_Controller extends Controller
         $announcement = Announcement::firstOrFail($id);
 
         $announcement->delete();
+
+        return response()->JsonWithCode(["msg" => "success"], 200);
     }
 }
