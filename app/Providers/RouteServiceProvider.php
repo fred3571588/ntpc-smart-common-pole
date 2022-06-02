@@ -57,7 +57,7 @@ class RouteServiceProvider extends ServiceProvider
         $names = [
             //登入API
             'A00_Login',
-            'B01_Announcement_manage'
+            'B00_Announcement'
         ];
         foreach ($names as $name) {
             if (substr($name, 0, 3) === '999') {
@@ -72,16 +72,16 @@ class RouteServiceProvider extends ServiceProvider
         }
     }
 
-        // $this->configureRateLimiting();
+    // $this->configureRateLimiting();
 
-        // $this->routes(function () {
-        //     Route::middleware('api')
-        //         ->prefix('api')
-        //         ->group(base_path('routes/api.php'));
+    // $this->routes(function () {
+    //     Route::middleware('api')
+    //         ->prefix('api')
+    //         ->group(base_path('routes/api.php'));
 
-        //     Route::middleware('web')
-        //         ->group(base_path('routes/web.php'));
-        // });
+    //     Route::middleware('web')
+    //         ->group(base_path('routes/web.php'));
+    // });
 
 
     /**
