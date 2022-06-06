@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('fake');
 });
 
-Route::get('/redirect', function (Request $request) {
+Route::get('/callback', function (Request $request) {
     $state = Str::random(40);
     $nonce = Str::random(40);
     $query = http_build_query([
@@ -35,13 +35,13 @@ Route::get('/redirect', function (Request $request) {
     return redirect('https://openidtest.ntpc.gov.tw/authorize?'.$query);
 });
 
-Route::get('/callback', function (Request $request) {
+Route::get('/redirect', function (Request $request) {
     $response = Http::withHeaders([
         'Authorization' => 'Basic' . ' ' . base64_encode("MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz" . ':' . "U0PbvgUuicqosehtAMB56u9Rcvroc1R_WZcrO02q1zU"),
     ])->post('https://openidtest.ntpc.gov.tw/token', [
         'grant_type' => 'authorization_code',
         'code' => $request->code,
-        'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/callback"),
+        'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/redirect"),
     ]);
 
     return $response->json();
