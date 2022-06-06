@@ -60,7 +60,7 @@ class B01_Announcement_Manage_controller extends Controller
      */
     public function show($id)
     {
-        $announcement = Announcement::firstOrFail($id);
+        $announcement = Announcement::findOrFail($id);
 
         return response()->JsonWithCode($announcement);
     }
@@ -86,7 +86,7 @@ class B01_Announcement_Manage_controller extends Controller
     public function update(Request $request, $id)
     {
         //
-        $announcement = Announcement::firstOrFail($id);
+        $announcement = Announcement::findOrFail($id);
         $announcement->update([
             'announcement_at' => $request->announcement_at,
             'place' => $request->place,
@@ -111,7 +111,7 @@ class B01_Announcement_Manage_controller extends Controller
     public function destroy($id)
     {
         //
-        $announcement = Announcement::firstOrFail($id);
+        $announcement = Announcement::findOrFail($id);
 
         $announcement->delete();
 
