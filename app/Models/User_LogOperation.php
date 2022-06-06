@@ -9,7 +9,7 @@ class User_LogOperation extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 
     public function user()
     {

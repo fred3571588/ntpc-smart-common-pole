@@ -9,7 +9,7 @@ class LeaseRequisition_Extend extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 
     public function leaseRequisition()
     {

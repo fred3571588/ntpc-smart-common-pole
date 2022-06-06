@@ -9,7 +9,7 @@ class SwitchBox extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 
     public function loop()
     {

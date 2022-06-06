@@ -9,7 +9,7 @@ class Rented_Report_Attached_Photo extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 
     public function report_attached()
     {

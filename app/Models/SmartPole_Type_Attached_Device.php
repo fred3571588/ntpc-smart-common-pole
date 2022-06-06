@@ -9,7 +9,7 @@ class SmartPole_Type_Attached_Device extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 
     public function type_attached()
     {

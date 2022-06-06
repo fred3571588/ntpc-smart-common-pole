@@ -9,7 +9,7 @@ class Rented_Pole extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 
     public function rented()
     {

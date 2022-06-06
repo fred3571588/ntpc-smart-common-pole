@@ -9,7 +9,7 @@ class SmartPole_Attached extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 
     public function smartpole()
     {

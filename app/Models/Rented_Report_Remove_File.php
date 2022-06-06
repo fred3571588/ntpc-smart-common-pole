@@ -9,7 +9,7 @@ class Rented_Report_Remove_File extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 
     public function report_remove()
     {
