@@ -15,6 +15,7 @@ class CreateSmartpoleTable extends Migration
     {
         Schema::create('smartpole', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('SNSL')->comment('路燈編號');
             $table->string('district',10)->nullable()->comment('行政區');
             $table->string('village',10)->nullable()->comment('里別');
             $table->string('road',10)->nullable()->comment('路段');

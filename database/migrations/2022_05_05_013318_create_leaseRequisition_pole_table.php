@@ -15,7 +15,6 @@ class CreateLeaseRequisitionPoleTable extends Migration
     {
         Schema::create('leaseRequisition_pole', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('SNSL')->comment('路燈編號');
             $table->decimal('Lat',10,8)->comment('緯度');
             $table->decimal('Lng',10,8)->comment('經度');
             $table->string('memo',100)->nullable()->comment('備註說明');
