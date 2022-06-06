@@ -41,7 +41,7 @@ Route::get('/callback', function (Request $request) {
     ])->post('https://openidtest.ntpc.gov.tw/token', [
         'grant_type' => 'authorization_code',
         'code' => $request->code,
-        'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/redirect"),
+        'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/callback"),
     ]);
 
     return $response->json();
