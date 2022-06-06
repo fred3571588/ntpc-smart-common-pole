@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\B00_announcement;
+namespace App\Http\Controllers\B00_Announcement;
 
 use App\Http\Controllers\Controller;
 

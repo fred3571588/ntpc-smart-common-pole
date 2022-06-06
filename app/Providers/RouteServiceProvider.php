@@ -34,7 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () use ($RouteServiceProvider) {
             // 預設token
             $RouteServiceProvider->boot_def();
-            // 自訂route-每次呼叫都需要檢查token
+
             Route::prefix('api')->group(function () use ($RouteServiceProvider) {
                 $RouteServiceProvider->boot_api();
             });
@@ -57,7 +57,8 @@ class RouteServiceProvider extends ServiceProvider
         $names = [
             //登入API
             'A00_Login',
-            'B00_Announcement'
+            'B00_Announcement',
+            'C00_Document',
         ];
         foreach ($names as $name) {
             if (substr($name, 0, 3) === '999') {
@@ -71,18 +72,6 @@ class RouteServiceProvider extends ServiceProvider
             }
         }
     }
-
-    // $this->configureRateLimiting();
-
-    // $this->routes(function () {
-    //     Route::middleware('api')
-    //         ->prefix('api')
-    //         ->group(base_path('routes/api.php'));
-
-    //     Route::middleware('web')
-    //         ->group(base_path('routes/web.php'));
-    // });
-
 
     /**
      * Configure the rate limiters for the application.
