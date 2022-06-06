@@ -26,12 +26,12 @@ Route::get('/redirect', function (Request $request) {
     $query = http_build_query([
         'response_type' => 'code',
         'client_id' => 'MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',
-        'redirect_uri' => 'http://211.72.231.157/ntpc_SmartPole/callback',
+        'redirect_uri' => 'http://211.72.231.157/ntpc_SmartPole/redirect',
         'scope' => 'openid profile personal email address phone',
         'state' => $state,
         'nonce' => $nonce,
     ]);
-    dd('https://openidtest.ntpc.gov.tw/authorize?'.$query);
+    // dd('https://openidtest.ntpc.gov.tw/authorize?'.$query);
     return redirect('https://openidtest.ntpc.gov.tw/authorize?'.$query);
 });
 
@@ -41,7 +41,7 @@ Route::get('/callback', function (Request $request) {
     ])->post('https://openidtest.ntpc.gov.tw/token', [
         'grant_type' => 'authorization_code',
         'code' => $request->code,
-        'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/callback"),
+        'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/redirect"),
     ]);
 
     return $response->json();
