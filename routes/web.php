@@ -31,6 +31,7 @@ Route::get('/redirect', function (Request $request) {
         'state' => $state,
         'nonce' => $nonce,
     ]);
+    dd('https://openidtest.ntpc.gov.tw/authorize?'.$query);
     return redirect('https://openidtest.ntpc.gov.tw/authorize?'.$query);
 });
 

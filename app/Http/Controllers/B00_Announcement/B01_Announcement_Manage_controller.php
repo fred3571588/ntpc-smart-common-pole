@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\B00_announcement;
+
 use App\Http\Controllers\Controller;
 
 
@@ -28,15 +29,6 @@ class B01_Announcement_Manage_controller extends Controller
      */
     public function create(Request $request)
     {
-        Announcement::create([
-            'announcement_at' => $request->announcement_at,
-            'place' => $request->place,
-            'content' => $request->content,
-            'memo' => $request->memo,
-            'status' => $request->status,
-            'created_by' => $request->created_by,
-            'updated_by' => $request->updated_by,
-        ]);
     }
 
     /**
@@ -47,7 +39,17 @@ class B01_Announcement_Manage_controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $announcement = Announcement::create([
+            'announcement_at' => $request->announcement_at,
+            'place' => $request->place,
+            'content' => $request->content,
+            'memo' => $request->memo,
+            'status' => $request->status,
+            'created_by' => $request->created_by,
+            'updated_by' => $request->updated_by,
+        ]);
+
+        return response()->JsonWithCode($announcement,200);
     }
 
     /**
