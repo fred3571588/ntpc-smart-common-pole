@@ -35,6 +35,7 @@ Route::get('/redirect', function (Request $request) {
 });
 
 Route::get('/callback', function (Request $request) {
+    dd($request->code);
     $response = Http::withHeaders([
         'Authorization' => 'Basic' . ' ' . base64_encode("MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz" . ':' . "U0PbvgUuicqosehtAMB56u9Rcvroc1R_WZcrO02q1zU"),
     ])->post('https://openidtest.ntpc.gov.tw/token', [
