@@ -13,7 +13,7 @@ class CreateAreaTable extends Migration
      */
     public function up()
     {
-        Schema::create('area', function (Blueprint $table) {
+        Schema::create('areas', function (Blueprint $table) {
             $table->id();
             $table->string('name',30)->comment('場域名稱');
             $table->string('code',30)->comment('場域編碼');
@@ -33,6 +33,6 @@ class CreateAreaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('area');
+        Schema::dropIfExists('areas');
     }
 }

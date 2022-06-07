@@ -59,6 +59,7 @@ class RouteServiceProvider extends ServiceProvider
             'A00_Login',
             'B00_Announcement',
             'C00_Document',
+            'Z00_Other',
         ];
         foreach ($names as $name) {
             if (substr($name, 0, 3) === '999') {

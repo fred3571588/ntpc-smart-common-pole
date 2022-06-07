@@ -1,7 +1,7 @@
 <?php
 
 // A00_系統首頁
-// namespace App\Http\Controllers\A00_Login;
+
 use Illuminate\Support\Facades\Route;
 
 // 登入與驗證
