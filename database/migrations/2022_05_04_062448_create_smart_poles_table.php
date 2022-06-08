@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSmartpoleTable extends Migration
+class CreateSmartpolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateSmartpoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('smartpole', function (Blueprint $table) {
+        Schema::create('smart_poles', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('SNSL')->comment('路燈編號');
             $table->string('district',10)->nullable()->comment('行政區');
             $table->string('village',10)->nullable()->comment('里別');
-            $table->string('road',10)->nullable()->comment('路段');
+            $table->string('road',50)->nullable()->comment('路段');
             $table->string('address',100)->nullable()->comment('地址');
             $table->decimal('Lat',10,8)->comment('緯度');
             $table->decimal('Lng',10,8)->comment('經度');
@@ -44,6 +44,6 @@ class CreateSmartpoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('smartpole');
+        Schema::dropIfExists('smart_poles');
     }
 }

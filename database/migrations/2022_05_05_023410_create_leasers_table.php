@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLeaserTable extends Migration
+class CreateLeasersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLeaserTable extends Migration
      */
     public function up()
     {
-        Schema::create('leaser', function (Blueprint $table) {
+        Schema::create('leasers', function (Blueprint $table) {
             $table->id();
             $table->string('account')->comment('帳號');
             $table->string('certificate')->comment('憑證序號');
@@ -42,6 +42,6 @@ class CreateLeaserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leaser');
+        Schema::dropIfExists('leasers');
     }
 }
