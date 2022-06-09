@@ -59,6 +59,7 @@ class RouteServiceProvider extends ServiceProvider
             'A00_Login',
             'B00_Announcement',
             'C00_Document',
+            'D00_SmartPole',
             'Z00_Other',
         ];
         foreach ($names as $name) {
