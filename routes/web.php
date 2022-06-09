@@ -60,7 +60,7 @@ Route::get('/refresh_token', function (Request $request) {
 Route::get('/ntpc_userinfo',function(Request $request){
     $response = Http::withHeaders([
         'Authorization' => 'Basic' . ' ' . 'dRmeAVNQS3f5IW4PzJE75nnk_RzHQTAd2BiGAg189Gs'
-    ])->get('https://openidtest.ntpc.gov.tw/userinfo');
+    ])->asForm()->post('https://openidtest.ntpc.gov.tw/userinfo');
 
     return $response->json();
 });
