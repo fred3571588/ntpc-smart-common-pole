@@ -62,5 +62,5 @@ Route::get('/ntpc_userinfo',function(Request $request){
         'Authorization' => 'Bearer' . ' ' . 'dRmeAVNQS3f5IW4PzJE75nnk_RzHQTAd2BiGAg189Gs'
     ])->asForm()->post('https://openidtest.ntpc.gov.tw/userinfo');
 
-    return response()->json();
+    return response($response)->json();
 });
