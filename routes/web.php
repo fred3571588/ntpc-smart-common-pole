@@ -57,13 +57,10 @@ Route::get('/refresh_token', function (Request $request) {
     return $response->json();
 });
 
-Route::get('/ntpc_userinfo',function(Request $request, Closure $next){
+Route::get('/ntpc_userinfo',function(Request $request){
     $response = Http::withHeaders([
         'Authorization' => 'Bearer' . ' ' . 'dRmeAVNQS3f5IW4PzJE75nnk_RzHQTAd2BiGAg189Gs'
     ])->asForm()->post('https://openidtest.ntpc.gov.tw/userinfo');
 
-    $data = $next($response);
-    // return $response->json();
-    return response()->json($data, 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
-        JSON_UNESCAPED_UNICODE);
+    return json_encode($response, JSON_UNESCAPED_UNICODE);
 });
