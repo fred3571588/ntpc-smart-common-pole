@@ -43,12 +43,12 @@ Route::get('/callback', function (Request $request) {
         'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/callback"),
     ]);
 
-    return redirect('/ntpc_userinfo',$response->json());
+    return redirect('/ntpc_userinfo')->with($response->json());
     // return $response->json();
 });
 
 Route::get('/ntpc_userinfo',function(Request $request){
-    dd($request);
+    dd($request->session()->all());
     $response = Http::withHeaders([
         'Authorization' => 'Bearer' . ' ' . $request->access_token
     ])->asForm()->post('https://openidtest.ntpc.gov.tw/userinfo');
