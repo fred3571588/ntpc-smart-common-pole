@@ -43,7 +43,7 @@ Route::get('/callback', function (Request $request) {
         'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/callback"),
     ]);
 
-    return redirect('/ntpc_userinfo')->with('data',$response->json());
+    return redirect('/ntpc_userinfo')->with(['data' => $response->json()]);
     // return $response->json();
 });
 
