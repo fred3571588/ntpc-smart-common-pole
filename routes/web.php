@@ -48,6 +48,7 @@ Route::get('/callback', function (Request $request) {
 });
 
 Route::get('/ntpc_userinfo',function(Request $request){
+    dd($request);
     $response = Http::withHeaders([
         'Authorization' => 'Bearer' . ' ' . $request->access_token
     ])->asForm()->post('https://openidtest.ntpc.gov.tw/userinfo');
