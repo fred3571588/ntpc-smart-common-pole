@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('smart_poles', function (Blueprint $table) {
-            $table->float('Lat')->comment('緯度')->change();
-            $table->float('Lng')->comment('經度')->change();
+        Schema::table('leasers', function (Blueprint $table) {
+            $table->dropColumn(['enable_at','unable_at']);
         });
     }
 
@@ -26,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('smart_poles', function (Blueprint $table) {
+        Schema::table('leasers', function (Blueprint $table) {
             //
         });
     }

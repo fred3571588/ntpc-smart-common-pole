@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Leaser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -38,7 +39,35 @@ class ntpc_connect_controller extends Controller
         $get_ntpc_userinfo = Http::withHeaders(['Authorization' => 'Bearer' . ' ' . $tokens['access_token']
         ])->asForm()->post('https://openidtest.ntpc.gov.tw/userinfo');
 
-        return json_encode($get_ntpc_userinfo->json(), JSON_UNESCAPED_UNICODE);
-    }
+        $userinfo =  json_encode($get_ntpc_userinfo->json(), JSON_UNESCAPED_UNICODE);
+        $user_pass = false;
 
+        if ($userinfo['category'] != 'e') {
+            $user_pass = false;
+        }elseif ($userinfo['certificate']['category'] != 'MOEACA') {
+            $user_pass = false;
+        }else{
+            $user_pass = true;
+        }
+
+        if ($user_pass) {
+            $leaser = Leaser::firstOrCreate([
+                'account' => $userinfo['sub'],
+                'certificate' => $userinfo['certificates']['certificate'],
+                'name' => $userinfo['representative'],
+                'enterprise_name' => $userinfo['name'],
+                'taxnumber' => $userinfo['preferred_username'],
+                'contacts_name' => $userinfo['family_name'] . $userinfo['given_name'],
+                'contacts_gender' => $userinfo['gender'],
+                'contacts_phone' => $userinfo['phone_number'],
+                'contacts_email' => $userinfo['email'],
+                'status' => 1,
+                'active' => true,
+                'created_by' => 999,
+                'updated_by' => 999,
+            ]);
+        }else{
+            return response()->JsonWithCode(["msg" => "使用者驗證不通過"], 403);
+        }
+    }
 }

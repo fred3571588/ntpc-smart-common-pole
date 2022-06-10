@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Http;
 //     // // 重新核發token(重新計算時間) => 直接產生新的Token，舊的為無效。
 //     // Route::get('/AuthNewToken', 'A10_Login@AuthNewToken')->defaults('doNotLogAction', true);
 // });
+
+Route::get('users/{id}', function ($id) {
+
+});
