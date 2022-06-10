@@ -35,7 +35,7 @@ class ntpc_connect_controller extends Controller
 
         $tokens = $response->json();
 
-        $get_ntpc_userinfo = Http::withHeaders(['Authorization' => 'Bearer' . ' ' . $tokens->access_token
+        $get_ntpc_userinfo = Http::withHeaders(['Authorization' => 'Bearer' . ' ' . $tokens['access_token']
         ])->asForm()->post('https://openidtest.ntpc.gov.tw/userinfo');
 
         return json_encode($get_ntpc_userinfo->json(), JSON_UNESCAPED_UNICODE);
