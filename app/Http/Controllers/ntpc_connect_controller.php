@@ -41,9 +41,4 @@ class ntpc_connect_controller extends Controller
         return json_encode($get_ntpc_userinfo->json(), JSON_UNESCAPED_UNICODE);
     }
 
-    public function ntpc_userinfo(Request $request )
-    {
-
-
-    }
 }

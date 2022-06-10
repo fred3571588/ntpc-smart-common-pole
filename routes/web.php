@@ -25,8 +25,6 @@ Route::get('/redirect', [ntpc_connect_controller::class,'redirect'])->name('redi
 
 Route::get('/callback',[ntpc_connect_controller::class,'callback'])->name('callback');
 
-// Route::get('/ntpc_userinfo',[ntpc_connect_controller::class,'ntpc_userinfo'])->name('ntpc_userinfo');
-
 Route::get('/refresh_token', function (Request $request) {
     $response = Http::asForm()->post('https://openidtest.ntpc.gov.tw/refresh', [
         'client_id' => 'MDVjMWM1YTMtOTQ2MS00NTE0LWE1MjEtNDJiZGFhMGFjMDUz',
