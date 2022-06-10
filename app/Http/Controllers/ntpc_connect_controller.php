@@ -33,9 +33,9 @@ class ntpc_connect_controller extends Controller
             'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/callback"),
         ]);
 
-        dd($response->json());
+        $tokens = $response->json();
 
-        $get_ntpc_userinfo = Http::withHeaders(['Authorization' => 'Bearer' . ' ' . $request->access_token
+        $get_ntpc_userinfo = Http::withHeaders(['Authorization' => 'Bearer' . ' ' . $tokens->access_token
         ])->asForm()->post('https://openidtest.ntpc.gov.tw/userinfo');
 
         return json_encode($get_ntpc_userinfo->json(), JSON_UNESCAPED_UNICODE);
