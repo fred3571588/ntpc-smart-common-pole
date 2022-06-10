@@ -41,7 +41,7 @@ class ntpc_connect_controller extends Controller
         // return $response->json();
     }
 
-    public function ntpc_user(Request $request ,$data)
+    public function ntpc_userinfo(Request $request ,$data)
     {
         dd($data);
         $response = Http::withHeaders(['Authorization' => 'Bearer' . ' ' . $request->access_token
