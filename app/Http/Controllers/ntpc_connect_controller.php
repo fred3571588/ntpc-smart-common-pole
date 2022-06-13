@@ -73,7 +73,7 @@ class ntpc_connect_controller extends Controller
             );
             $leaser->token()->create([
                 'access_token' => $tokens['access_token'],
-                'refresh_token' => $tokens['fresh_token'],
+                'refresh_token' => $tokens['refresh_token'],
                 'token_maturity_at' => Carbon::now()->addSeconds(14400),
                 'work' => true,
                 'status' => 0,
