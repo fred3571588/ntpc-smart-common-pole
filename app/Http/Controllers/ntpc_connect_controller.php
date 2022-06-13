@@ -43,7 +43,7 @@ class ntpc_connect_controller extends Controller
 
         $userinfo =  json_encode($get_ntpc_userinfo->json(), JSON_FORCE_OBJECT);
         $user_pass = false;
-        // dd($userinfo);
+        dd($userinfo);
         if ($userinfo['category'] != 'e') {
             $user_pass = false;
         } elseif ($userinfo['certificate']['category'] != 'MOEACA') {
