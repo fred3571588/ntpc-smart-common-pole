@@ -47,7 +47,7 @@ class ntpc_connect_controller extends Controller
         dd($userinfo);
         if ($userinfo['category'] != 'e') {
             $user_pass = false;
-        } elseif ($userinfo['certificate']['category'] != 'MOEACA') {
+        } elseif ($userinfo['certificates'][0]['category'] != 'MOEACA') {
             $user_pass = false;
         } else {
             $user_pass = true;
@@ -58,7 +58,7 @@ class ntpc_connect_controller extends Controller
                 ['account' => $userinfo['sub']],
                 [
                 'account' => $userinfo['sub'],
-                'certificate' => $userinfo['certificates']['certificate'],
+                'certificate' => $userinfo['certificates'][0]['certificate'],
                 'name' => $userinfo['representative'],
                 'enterprise_name' => $userinfo['name'],
                 'taxnumber' => $userinfo['preferred_username'],
