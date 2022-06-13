@@ -82,7 +82,7 @@ class ntpc_connect_controller extends Controller
             ]);
             return response()->JsonWithCode(["name" => $userinfo['family_name'] . $userinfo['given_name'],"access_token" => $tokens['access_token']], 200);
         } else {
-            return response()->JsonWithCode(["msg" => "使用者驗證不通過"], 403);
+            return response()->JsonWithCode(["msg" => "authenticate fail"], 403);
         }
     }
 }
