@@ -47,7 +47,7 @@ class ntpc_connect_controller extends Controller
         //尋找是否有工商憑證卡
         $card_pass = false;
         foreach ($userinfo['certificates'] as $key => $value) {
-            if($userinfo['certificates'][$key]['category'] == 'MOEACA'){
+            if ($userinfo['certificates'][$key]['category'] == 'MOEACA') {
                 $card_pass = true;
                 break;
             }
@@ -56,7 +56,6 @@ class ntpc_connect_controller extends Controller
             $user_pass = false;
         } elseif ($card_pass) {
             $user_pass = true;
-            break;
         } else {
             $user_pass = false;
         }
