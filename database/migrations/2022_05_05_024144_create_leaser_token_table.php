@@ -15,7 +15,7 @@ class CreateLeaserTokenTable extends Migration
     {
         Schema::create('leaser_token', function (Blueprint $table) {
             $table->id();
-            $table->string('token')->comment('Token');
+            $table->string('token')->comment('access_token');
             $table->string('clientIP')->comment('客戶端IP');
             $table->dateTime('token_maturity_at')->comment('Token 到期時間');
             $table->dateTime('signOut_at')->comment('登出時間');

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Leaser;
+use App\Models\LeaserToken;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -34,7 +36,7 @@ class ntpc_connect_controller extends Controller
             'redirect_uri' => urlencode("http://211.72.231.157/ntpc_SmartPole/callback"),
         ]);
 
-        $tokens = $response->json();
+        $tokens = $response->json(); //取得的新北市民access_token
 
         $get_ntpc_userinfo = Http::withHeaders(['Authorization' => 'Bearer' . ' ' . $tokens['access_token']
         ])->asForm()->post('https://openidtest.ntpc.gov.tw/userinfo');
@@ -44,14 +46,16 @@ class ntpc_connect_controller extends Controller
 
         if ($userinfo['category'] != 'e') {
             $user_pass = false;
-        }elseif ($userinfo['certificate']['category'] != 'MOEACA') {
+        } elseif ($userinfo['certificate']['category'] != 'MOEACA') {
             $user_pass = false;
-        }else{
+        } else {
             $user_pass = true;
         }
 
         if ($user_pass) {
-            $leaser = Leaser::firstOrCreate([
+            $leaser = Leaser::firstOrCreate(
+                ['account' => $userinfo['sub']],
+                [
                 'account' => $userinfo['sub'],
                 'certificate' => $userinfo['certificates']['certificate'],
                 'name' => $userinfo['representative'],
@@ -65,8 +69,19 @@ class ntpc_connect_controller extends Controller
                 'active' => true,
                 'created_by' => 999,
                 'updated_by' => 999,
+            ]
+            );
+            $leaser_token = $leaser->token()->create([
+                'access_token' => $tokens['access_token'],
+                'refresh_token' => $tokens['fresh_token'],
+                'token_maturity_at' => Carbon::now()->addSeconds(14400),
+                'work' => true,
+                'status' => 0,
+                'created_by' => 999,
+                'updated_by' => 999,
             ]);
-        }else{
+            return response()->JsonWithCode(["name" => $userinfo['family_name'] . $userinfo['given_name'],"access_token" => $tokens['access_token']], 200);
+        } else {
             return response()->JsonWithCode(["msg" => "使用者驗證不通過"], 403);
         }
     }
