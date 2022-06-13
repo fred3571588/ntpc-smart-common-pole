@@ -44,6 +44,7 @@ class ntpc_connect_controller extends Controller
         $userinfo_src =  json_encode($get_ntpc_userinfo->json(), JSON_UNESCAPED_UNICODE);
         $userinfo = json_decode($userinfo_src, true);
         $user_pass = false;
+        dd($userinfo);
         if ($userinfo['category'] != 'e') {
             $user_pass = false;
         } elseif ($userinfo['certificate']['category'] != 'MOEACA') {
@@ -71,7 +72,7 @@ class ntpc_connect_controller extends Controller
                 'updated_by' => 999,
             ]
             );
-            $leaser_token = $leaser->token()->create([
+            $leaser->token()->create([
                 'access_token' => $tokens['access_token'],
                 'refresh_token' => $tokens['fresh_token'],
                 'token_maturity_at' => Carbon::now()->addSeconds(14400),
