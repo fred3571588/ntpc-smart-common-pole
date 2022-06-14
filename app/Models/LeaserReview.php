@@ -15,4 +15,9 @@ class LeaserReview extends Model
     {
         return $this->belongsTo(Leaser::class);
     }
+
+    public function file()
+    {
+        return $this->hasMany(LeaserReviewFile::class);
+    }
 }
