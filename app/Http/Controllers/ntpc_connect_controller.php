@@ -44,6 +44,7 @@ class ntpc_connect_controller extends Controller
         $userinfo_src =  json_encode($get_ntpc_userinfo->json(), JSON_UNESCAPED_UNICODE);
         $userinfo = json_decode($userinfo_src, true);
         $user_pass = false;
+        dd($userinfo);
         //尋找是否有工商憑證卡
         $card_pass = false;
         foreach ($userinfo['certificates'] as $key => $value) {
@@ -65,7 +66,7 @@ class ntpc_connect_controller extends Controller
                 ['account' => $userinfo['sub']],
                 [
                 'account' => $userinfo['sub'],
-                'certificate' => $userinfo['certificates'][0]['certificate'],
+                'certificate' => $userinfo['certificates'][$key]['certificate'],
                 'name' => $userinfo['representative'],
                 'enterprise_name' => $userinfo['name'],
                 'taxnumber' => $userinfo['preferred_username'],
@@ -82,7 +83,7 @@ class ntpc_connect_controller extends Controller
             $leaser->token()->create([
                 'access_token' => $tokens['access_token'],
                 'refresh_token' => $tokens['refresh_token'],
-                'token_maturity_at' => Carbon::now()->addSeconds(14400),
+                'token_maturity_at' => Carbon::now()->addSeconds(900), //token有效期為15分鐘
                 'work' => true,
                 'status' => 0,
                 'created_by' => 999,

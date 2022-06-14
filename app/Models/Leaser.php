@@ -22,6 +22,11 @@ class Leaser extends Model
         return $this->hasOne(LeaserToken::class);
     }
 
+    // public function latestToken()
+    // {
+    //     return $this->hasOne(LeaserToken::class)->latestOfMany();
+    // }
+
     public function rented()
     {
         return $this->hasMany(Rented::class);
