@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SmartPole_Type_Attached extends Model
+class SmartPoleTypeAttached extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function smartpole_type()
+    public function smartpoletype()
     {
-        return $this->belongsTo(SmartPole_Type::class);
+        return $this->belongsTo(SmartPoleType::class);
     }
 
     public function device()

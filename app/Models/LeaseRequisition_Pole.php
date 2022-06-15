@@ -15,4 +15,9 @@ class LeaseRequisition_Pole extends Model
     {
         return $this->belongsTo(LeaseRequisition::class);
     }
+
+    public function smartpole()
+    {
+        return $this->hasOne(SmartPole::class);
+    }
 }

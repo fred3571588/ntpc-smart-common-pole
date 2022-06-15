@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SmartPole_Type extends Model
+class SmartPoleType extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,7 @@ class SmartPole_Type extends Model
 
     public function smartpole()
     {
-        return $this->belongsTo(SmartPole::class);
+        return $this->hasMany(SmartPole::class);
     }
 
     public function file()
@@ -23,6 +23,6 @@ class SmartPole_Type extends Model
 
     public function attached()
     {
-        return $this->hasMany(SmartPole_Type_Attached::class);
+        return $this->hasMany(SmartPoleTypeAttached::class);
     }
 }
