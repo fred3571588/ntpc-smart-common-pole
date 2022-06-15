@@ -70,7 +70,7 @@ class E01_Leaser_Manage_Controller extends Controller
             'contacts_phone' => $validated['contacts_phone'],
         ]);
 
-        $leaser->review()->create([
+        $leaser_review = $leaser->review()->create([
             'status' => 0,
             'created_by' => 999,
             'updated_by' => 999,
@@ -78,7 +78,14 @@ class E01_Leaser_Manage_Controller extends Controller
 
         $leaser_file = $request->file('leaser_file');
         $filename = time().$leaser_file->getClientOriginalName();
-        Storage::putFile('leaser_file',new File('/leaserReview/document'));
-        ///後續回來想想@@
+        $path = Storage::putFileAs('leaser_file', new File('/leaserReview/document'), $filename);
+        ///後續回來想想@@，需要測試
+        $leaser_review->file()->create([
+            'file_name' => $filename,
+            'file_path' => $path,
+            'status' => 1,
+            'created_by' => $request->input('leaser_id'),
+            'updated_by' => $request->input('leaser_id'),
+        ]);
     }
 }
