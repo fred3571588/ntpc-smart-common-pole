@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -16,7 +17,7 @@ class CreateSmartpoleAttachedTable extends Migration
         Schema::create('smartpole_attached', function (Blueprint $table) {
             $table->id();
             $table->boolean('isAttach')->comment('有無附掛(0：無、1：有)');
-            $table->string('attachment',100)->nullable()->comment('附掛物');
+            $table->string('attachment',100)->nullable()->comment('附掛種類');
             $table->string('attach_company',20)->nullable()->comment('附掛廠商(單位)');
             $table->dateTime('attach_startdate')->nullable()->comment('附掛起始日期');
             $table->dateTime('attach_enddate')->nullable()->comment('附掛終止日期');

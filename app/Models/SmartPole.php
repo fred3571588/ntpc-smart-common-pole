@@ -37,6 +37,6 @@ class SmartPole extends Model
 
     public function attached()
     {
-        return $this->hasMany(SmartPole_Attached::class);
+        return $this->hasMany(SmartPoleAttached::class);
     }
 }

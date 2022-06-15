@@ -13,7 +13,7 @@ class AttachedDevice extends Model
 
     public function attached()
     {
-        return $this->belongsTo(smartpole_attached::class);
+        return $this->belongsTo(SmartPoleAttached::class);
     }
 
     public function cost()
