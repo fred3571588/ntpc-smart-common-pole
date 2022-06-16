@@ -30,7 +30,7 @@ class CreateSmartpolesTable extends Migration
             $table->dateTime('repair_startdate')->nullable()->comment('保固起始日期');
             $table->dateTime('repair_enddate')->nullable()->comment('保固終止日期');
             $table->string('memo',100)->nullable()->comment('備註說明');
-            $table->integer('status')->comment('資料狀態');
+            $table->integer('status')->comment('共桿狀態(1:尚有設備,2:尚有孔數,3:孔數與設備皆有,4:租借已滿)');
             $table->timestamps();
             $table->bigInteger('created_by')->comment('資料建立人員');
             $table->bigInteger('updated_by')->comment('最後編輯人員');
