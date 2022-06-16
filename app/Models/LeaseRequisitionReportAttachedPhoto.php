@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rented_Report_Remove_Photo extends Model
+class LeaseRequisitionReportAttachedPhoto extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function report_remove()
+    public function report_attached()
     {
-        return $this->belongsTo(Rented_Report_Remove::class);
+        return $this->belongsTo(LeaseRequisitionReportAttached::class);
     }
 }

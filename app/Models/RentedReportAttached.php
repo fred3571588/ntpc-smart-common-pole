@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rented_State extends Model
+class RentedReportAttached extends Model
 {
     use HasFactory;
 
@@ -16,8 +16,13 @@ class Rented_State extends Model
         return $this->belongsTo(Rented::class);
     }
 
-    public function record()
+    public function photo()
     {
-        return $this->hasMany(Rented_State_Record::class);
+        return $this->hasMany(RentedReportAttachedPhoto::class);
+    }
+
+    public function file()
+    {
+        return $this->hasMany(RentedReportAttachedFile::class);
     }
 }

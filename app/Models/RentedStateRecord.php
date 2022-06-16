@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SmartPole_Type_Attached_Device extends Model
+class RentedStateRecord extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function type_attached()
+    public function rented_state()
     {
-        return $this->belongsTo(SmartPole_Type_Attached::class);
+        return $this->belongsTo(RentedState::class);
     }
 }

@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User_LogOperation extends Model
+class AttachedDeviceCost extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function user()
+    public function device()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(AttachedDevice::class);
     }
 }

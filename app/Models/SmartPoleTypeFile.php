@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LeaseRequisition_Report_Attached_File extends Model
+class SmartPoleTypeFile extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function report_attached()
+    public function smartpole_type()
     {
-        return $this->belongsTo(LeaseRequisition_Report_Attached::class);
+        return $this->belongsTo(SmartPoleType::class);
     }
 }

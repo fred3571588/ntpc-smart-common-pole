@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LeaseRequisition_State extends Model
+class LeaseRequisitionPole extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,11 @@ class LeaseRequisition_State extends Model
 
     public function leaseRequisition()
     {
-        return $this->belongsTo(leaseRequisition::class);
+        return $this->belongsTo(LeaseRequisition::class);
     }
 
-    public function record()
+    public function smartpole()
     {
-        return $this->hasMany(LeaseRequisition_State_Record::class);
+        return $this->hasOne(SmartPole::class);
     }
 }

@@ -31,12 +31,12 @@ class User extends Authenticatable
 
     public function logOperation()
     {
-        return $this->hasMany(User_LogOperation::class);
+        return $this->hasMany(UserLogOperation::class);
     }
 
     public function permission()
     {
-        return $this->hasOne(User_Permission::class);
+        return $this->hasOne(UserPermission::class);
     }
 
     public function token()

@@ -13,12 +13,12 @@ class SmartPole extends Model
 
     public function rented_pole()
     {
-        return $this->belongsTo(Rented_Pole::class);
+        return $this->belongsTo(RentedPole::class);
     }
 
     public function leaseRequisition_pole()
     {
-        return $this->belongsTo(LeaseRequisition_Pole::class);
+        return $this->belongsTo(LeaseRequisitionPole::class);
     }
 
     public function area()
@@ -32,7 +32,7 @@ class SmartPole extends Model
 
     public function photo()
     {
-        return $this->hasMany(SmartPole_Photo::class);
+        return $this->hasMany(SmartPolePhoto::class);
     }
 
     public function attached()

@@ -18,7 +18,7 @@ class SmartPoleType extends Model
 
     public function file()
     {
-        return $this->hasMany(SmartPole_Type_File::class);
+        return $this->hasMany(SmartPoleTypeFile::class);
     }
 
     public function attached()

@@ -18,7 +18,7 @@ class SmartPoleTypeAttached extends Model
 
     public function device()
     {
-        return $this->hasOne(SmartPole_Type_Attached_Device::class);
+        return $this->hasOne(SmartPoleTypeAttachedDevice::class);
     }
 
 }

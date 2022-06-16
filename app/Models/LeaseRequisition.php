@@ -18,22 +18,22 @@ class LeaseRequisition extends Model
 
     public function pole()
     {
-        return $this->hasMany(LeaseRequisition_Pole::class);
+        return $this->hasMany(LeaseRequisitionPole::class);
     }
 
     public function file()
     {
-        return $this->hasMany(LeaseRequisition_File::class);
+        return $this->hasMany(LeaseRequisitionFile::class);
     }
 
     public function state()
     {
-        return $this->hasOne(LeaseRequisition_State::class);
+        return $this->hasOne(LeaseRequisitionState::class);
     }
 
     public function report_attached()
     {
-        return $this->hasOne(LeaseRequisition_Report_Attached::class);
+        return $this->hasOne(LeaseRequisitionReportAttached::class);
     }
 
     public function smartpole()

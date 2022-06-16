@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rented_Report_Attached_File extends Model
+class LeaseRequisitionFile extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function report_attached()
+    public function leaseRequisition()
     {
-        return $this->belongsTo(Rented_Report_Attached::class);
+        return $this->belongsTo(LeaseRequisition::class);
     }
 }

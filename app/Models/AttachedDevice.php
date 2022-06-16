@@ -18,6 +18,6 @@ class AttachedDevice extends Model
 
     public function cost()
     {
-        return $this->hasOne(AttachedDevice_Cost::class);
+        return $this->hasOne(AttachedDeviceCost::class);
     }
 }

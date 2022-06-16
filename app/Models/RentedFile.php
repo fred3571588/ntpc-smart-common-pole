@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AttachedDevice_Cost extends Model
+class RentedFile extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function device()
+    public function rented()
     {
-        return $this->belongsTo(AttachedDevice::class);
+        return $this->belongsTo(Rented::class);
     }
 }

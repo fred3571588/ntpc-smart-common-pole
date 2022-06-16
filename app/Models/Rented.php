@@ -18,26 +18,26 @@ class Rented extends Model
 
     public function state()
     {
-        return $this->hasOne(Rented_State::class);
+        return $this->hasOne(RentedState::class);
     }
 
     public function file()
     {
-        return $this->hasMany(Rented_File::class);
+        return $this->hasMany(RentedFile::class);
     }
 
     public function pole()
     {
-        return $this->hasMany(Rented_Pole::class);
+        return $this->hasMany(RentedPole::class);
     }
 
     public function report_attached()
     {
-        return $this->hasOne(Rented_Report_Attached::class);
+        return $this->hasOne(RentedReportAttached::class);
     }
 
     public function report_remove()
     {
-        return $this->hasOne(Rented_Report_Remove::class);
+        return $this->hasOne(RentedReportRemove::class);
     }
 }

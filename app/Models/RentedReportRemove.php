@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rented_File extends Model
+class RentedReportRemove extends Model
 {
     use HasFactory;
 
@@ -14,5 +14,15 @@ class Rented_File extends Model
     public function rented()
     {
         return $this->belongsTo(Rented::class);
+    }
+
+    public function photo()
+    {
+        return $this->hasMany(RentedReportRemovePhoto::class);
+    }
+
+    public function file()
+    {
+        return $this->hasMany(RentedReportRemoveFile::class);
     }
 }

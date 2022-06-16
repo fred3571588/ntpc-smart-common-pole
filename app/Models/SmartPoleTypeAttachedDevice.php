@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User_Permission extends Model
+class SmartPoleTypeAttachedDevice extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function user()
+    public function type_attached()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(SmartPoleTypeAttached::class);
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rented_Report_Attached extends Model
+class RentedPole extends Model
 {
     use HasFactory;
 
@@ -16,13 +16,8 @@ class Rented_Report_Attached extends Model
         return $this->belongsTo(Rented::class);
     }
 
-    public function photo()
+    public function smartpole()
     {
-        return $this->hasMany(Rented_Report_Attached_Photo::class);
-    }
-
-    public function file()
-    {
-        return $this->hasMany(Rented_Report_Attached_File::class);
+        return $this->hasOne(Smartpole::class);
     }
 }

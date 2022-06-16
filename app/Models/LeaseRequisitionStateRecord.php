@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SmartPole_Type_File extends Model
+class LeaseRequisitionStateRecord extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function smartpole_type()
+    public function state()
     {
-        return $this->belongsTo(SmartPole_Type::class);
+        return $this->belongsTo(LeaseRequisitionState::class);
     }
 }

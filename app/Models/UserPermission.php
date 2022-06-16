@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LeaseRequisition_State_Record extends Model
+class UserPermission extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function state()
+    public function user()
     {
-        return $this->belongsTo(LeaseRequisition_State::class);
+        return $this->belongsTo(User::class);
     }
 }
