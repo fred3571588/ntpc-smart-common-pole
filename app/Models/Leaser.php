@@ -36,4 +36,9 @@ class Leaser extends Model
     {
         return $this->hasMany(LeaseRequisition::class);
     }
+
+    public function contacts_person()
+    {
+        return $this->hasOne(ContactPerson::class);
+    }
 }

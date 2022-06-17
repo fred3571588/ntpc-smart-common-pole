@@ -49,7 +49,20 @@ class F01_Attachment_Manage_Controller extends Controller
         }
         $pole_limit_weight = $sort_smartpole->smart_pole_type()->attached_weight->get();
         $merged = $sort_smartpole->merge($pole_limit_weight);
+
+
         //用merge
         return response()->JsonWithCode($merged);
+    }
+
+    public function detail(Request $request)
+    {
+        $validated = $request->validate([
+            'smartpole_id' => 'numeric|required'
+        ]);
+
+        $smartpole = SmartPole::findOrFail($validated['smartpole_id']);
+        $smartpole_type = $smartpole->smart_pole_type()->first();
+        $attachment = $smartpole->attached()->get();
     }
 }

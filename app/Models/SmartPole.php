@@ -39,4 +39,9 @@ class SmartPole extends Model
     {
         return $this->hasMany(SmartPoleAttached::class);
     }
+
+    public function maintain()
+    {
+        return $this->hasMany(SmartPoleMaintain::class);
+    }
 }

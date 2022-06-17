@@ -22,10 +22,10 @@ class CreateLeasersTable extends Migration
             $table->dateTime('unable_at')->comment('結束日期');
             $table->string('enterprise_name',100)->comment('企業名稱');
             $table->integer('taxnumber')->comment('統一編號');
-            $table->string('contacts_name',10)->comment('聯絡人名稱');
-            $table->string('contacts_gender',10)->comment('聯絡人性別');
-            $table->string('contacts_phone')->comment('聯絡電話');
-            $table->string('contacts_email',20)->comment('聯絡人信箱');
+            $table->string('contacts_name',10)->comment('申請人名稱');
+            $table->string('contacts_gender',10)->comment('申請人性別');
+            $table->string('contacts_phone')->comment('聯絡電話(市話)');
+            $table->string('contacts_email',20)->comment('申請人信箱');
             $table->string('memo',100)->nullable()->comment('備註說明');
             $table->integer('status')->comment('資料狀態');
             $table->boolean('active')->comment('帳號啟用');
