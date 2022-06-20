@@ -37,23 +37,10 @@ class C01_Document_Manage_Controller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeby(Request $request, $id)
     {
-        $document = Document::create([
-            'file_path' => $request->file_path,
-            'file_name' => $request->file_name,
-            'memo' => $request->memo,
-            'status' => $request->status,
-            'created_by' => $request->created_by,
-            'updated_by' => $request->updated_by,
-        ]);
-
-        return response()->JsonWithCode(["msg" => "success"], 200);
-    }
-
-    public function storeby($announcement_id, Request $request)
-    {
-        $accouncement = Announcement::findOrFail($announcement_id);
+        // dd($request);
+        $accouncement = Announcement::findOrFail($id);
 
         $document = $accouncement->document()->create([
             'file_path' => $request->file_path,
