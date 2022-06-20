@@ -87,7 +87,7 @@ class B01_Announcement_Manage_controller extends Controller
     {
         //
         $announcement = Announcement::findOrFail($id);
-        dd($announcement);
+        // dd($announcement);
         $announcement->update([
             'announcement_at' => $request->announcement_at,
             'place' => $request->place,
