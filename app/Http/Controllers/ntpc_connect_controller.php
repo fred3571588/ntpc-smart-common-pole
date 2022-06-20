@@ -44,7 +44,6 @@ class ntpc_connect_controller extends Controller
         $userinfo_src =  json_encode($get_ntpc_userinfo->json(), JSON_UNESCAPED_UNICODE);
         $userinfo = json_decode($userinfo_src, true);
         $user_pass = false;
-        dd($userinfo);
         //尋找是否有工商憑證卡
         $card_pass = false;
         foreach ($userinfo['certificates'] as $key => $value) {
