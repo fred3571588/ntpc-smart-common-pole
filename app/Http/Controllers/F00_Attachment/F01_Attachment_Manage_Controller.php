@@ -31,27 +31,31 @@ class F01_Attachment_Manage_Controller extends Controller
         //                             ->orWhere('area_id',$area_id)
         //                             ->orWhere('status',$validated['pole_status'])
         //                             ->get(); //依條件搜尋
-
+        
         $sort_smartpole = DB::table('smart_poles')->when(!empty($validated['address']), function ($query) use ($validated) {
-            return $query->where('address', 'LIKE', '%' .$validated['address']. '%');
+             $query->where('address', 'LIKE', '%' .$validated['address']. '%');
         })->when(!empty($validated['smart_pole_id']), function ($query) use ($validated) {
-            return $query->where('smart_pole_id', $validated['smart_pole_id']);
+             $query->where('smart_pole_id', $validated['smart_pole_id']);
         })->when(!empty($validated['company']), function ($query) use ($validated) {
-            return $query->where('build_company', 'LIKE', '%' .$validated['company']. '%');
+             $query->where('build_company', 'LIKE', '%' .$validated['company']. '%');
         })->when(!empty($validated['area']), function ($query) use ($area_id) {
-            return $query->where('area_id', $area_id);
+             $query->where('area_id', $area_id);
         })->when(!empty($validated['pole_status']), function ($query) use ($validated) {
-            return $query->where('status', $validated['pole_status']);
+             $query->where('status', $validated['pole_status']);
+        },function ($query)
+        {
+            return $query;
         })->get();
-        dd($sort_smartpole);
-        if (!empty($validated['attachment'])) {
-            $sort_smartpole->attached()->where('attachment', $validated['attachment'])->get();
-        }
+        $result = $sort_smartpole->all();
+        dd($result);
+        // if (!empty($validated['attachment'])) {
+        //     $sort_smartpole->attached()->where('attachment', $validated['attachment'])->get();
+        // }
 
         // $pole_limit_weight = $sort_smartpole->smart_pole_type()->attached_weight->get();
 
         //用merge
-        return response([$sort_smartpole,$pole_limit_weight], 200);
+        // return response([$sort_smartpole,$pole_limit_weight], 200);
     }
 
     public function detail(Request $request)
