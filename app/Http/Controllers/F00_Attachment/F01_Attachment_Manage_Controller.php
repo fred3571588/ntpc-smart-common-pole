@@ -12,18 +12,18 @@ class F01_Attachment_Manage_Controller extends Controller
 {
     public function search(Request $request)
     {
+        $area_id = null;
         $validated = $request->validate([
-            'address' => 'string|nullable',
-            'smartpole_id' => 'numeric|nullable',
-            'company' => 'string|nullable',
-            'area' => 'string|nullable',
-            'pole_status' => 'numeric|nullable',
-            'attachment' => 'string|nullable,'
+            'address' => 'nullable|string',
+            'smartpole_id' => 'nullable|numeric',
+            'company' => 'nullable|string',
+            'area' => 'nullable|string',
+            'pole_status' => 'nullable|numeric',
+            'attachment' => 'nullable|string',
         ]);
         if (!empty($validated['area'])) {
             $area_id = Area::where('name', $validated['area'])->first()->id;
         }
-
 
         // $sort_smartpole = SmartPole::where('address','LIKE','%' . $validated['address'] . '%')
         //                             ->orWhere('smart_pole_id',$validated['smart_pole_id'])
@@ -33,26 +33,25 @@ class F01_Attachment_Manage_Controller extends Controller
         //                             ->get(); //依條件搜尋
 
         $sort_smartpole = DB::table('smart_poles')->when(!empty($validated['address']), function ($query) use ($validated) {
-            return $query->where('address', $validated['address']);
+            return $query->where('address', 'LIKE', '%' .$validated['address']. '%');
         })->when(!empty($validated['smart_pole_id']), function ($query) use ($validated) {
             return $query->where('smart_pole_id', $validated['smart_pole_id']);
         })->when(!empty($validated['company']), function ($query) use ($validated) {
-            return $query->where('build_company', $validated['company']);
+            return $query->where('build_company', 'LIKE', '%' .$validated['company']. '%');
         })->when(!empty($validated['area']), function ($query) use ($area_id) {
             return $query->where('area_id', $area_id);
         })->when(!empty($validated['pole_status']), function ($query) use ($validated) {
             return $query->where('status', $validated['pole_status']);
         })->get();
-
+        dd($sort_smartpole);
         if (!empty($validated['attachment'])) {
             $sort_smartpole->attached()->where('attachment', $validated['attachment'])->get();
         }
-        $pole_limit_weight = $sort_smartpole->smart_pole_type()->attached_weight->get();
-        $merged = $sort_smartpole->merge($pole_limit_weight);
 
+        // $pole_limit_weight = $sort_smartpole->smart_pole_type()->attached_weight->get();
 
         //用merge
-        return response()->JsonWithCode($merged);
+        return response([$sort_smartpole,$pole_limit_weight], 200);
     }
 
     public function detail(Request $request)
@@ -64,5 +63,6 @@ class F01_Attachment_Manage_Controller extends Controller
         $smartpole = SmartPole::findOrFail($validated['smartpole_id']);
         $smartpole_type = $smartpole->smart_pole_type()->first();
         $attachment = $smartpole->attached()->get();
+        return response()->JsonWithCode([$smartpole,$smartpole_type,$attachment], 200);
     }
 }

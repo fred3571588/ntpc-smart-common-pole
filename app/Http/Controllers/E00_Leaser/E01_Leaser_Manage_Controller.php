@@ -13,7 +13,7 @@ class E01_Leaser_Manage_Controller extends Controller
     public function check(Request $request)
     {
         $leaser = Leaser::findOrFail($request->input('leaser_id'));
-        $leaser_review_check = $leaser->review()->exists;
+        $leaser_review_check = $leaser->review()->exists();
         if ($leaser_review_check) {
             if ($leaser->review()->first()->pass) {
                 return response()->jsonWithCode(['msg' => 'succrss'], 200);
@@ -21,23 +21,23 @@ class E01_Leaser_Manage_Controller extends Controller
                 return response()->jsonWithCode(['msg' => '審核未通過'], 401);
             }
         } else {
-            return response()->jsonWithCode(['msg' => '尚未建立審核資料'], 403);
+            return response(['msg' => '審核未通過'], 403);
         }
     }
 
     public function data(Request $request)
     {
-        $leaser = Leaser::findOrFail($request->input('leaser_id'));
-        return response()->jsonWithCode(['taxnumber' => $leaser->taxnumber,
-                                        'name' => $leaser->enterprise_name,
-                                        'representative' => $leaser->name,
-                                        'contacts_name' => $leaser->contacts_name,
-                                        'contacts_email' => $leaser->contacts_email,
-                                        'contacts_gender' => $leaser->contacts_gender,
-                                        'birthday' => $leaser->birthday,
-                                        'company_address' => $leaser->company_address,
-                                        'address' => $leaser->address,
-                                        'contacts_phone' => $leaser->contacts_phone,], 200);
+        $leaser = Leaser::findOrFail($request->leaser_id);
+        return response(['taxnumber' => $leaser->taxnumber,
+                        'name' => $leaser->enterprise_name,
+                        'representative' => $leaser->name,
+                        'contacts_name' => $leaser->contacts_name,
+                        'contacts_email' => $leaser->contacts_email,
+                        'contacts_gender' => $leaser->contacts_gender,
+                        'birthday' => $leaser->birthday,
+                        'company_address' => $leaser->company_address,
+                        'address' => $leaser->address,
+                        'contacts_phone' => $leaser->contacts_phone,], 200);
     }
 
     public function store(Request $request)

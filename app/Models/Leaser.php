@@ -19,7 +19,7 @@ class Leaser extends Model
 
     public function token()
     {
-        return $this->hasOne(LeaserToken::class);
+        return $this->hasMany(LeaserToken::class);
     }
 
     // public function latestToken()

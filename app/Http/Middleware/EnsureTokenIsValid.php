@@ -18,8 +18,9 @@ class EnsureTokenIsValid
      */
     public function handle(Request $request, Closure $next)
     {
-        $leaser_id = $request->input('leaser_id');
-        $token = $request->input('token');
+
+        $leaser_id = $request->leaser_id;
+        $token = $request->token;
         $leaser = Leaser::findOrFail($leaser_id);
         $leaser_token = $leaser->token()->latest()->first();
         if ($token != $leaser_token->access_token) {
