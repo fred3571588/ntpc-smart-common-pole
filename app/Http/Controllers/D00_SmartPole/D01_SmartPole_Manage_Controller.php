@@ -80,6 +80,6 @@ class D01_SmartPole_Manage_Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $aas = 10000;
     }
 }
