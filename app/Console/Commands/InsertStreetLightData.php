@@ -54,6 +54,9 @@ class InsertStreetLightData extends Command
                         'power' => $data['power'],
                         'TWD97X' => $data['TWD97X'],
                         'TWD97Y' => $data['TWD97Y'],
+                        'created_by' => 999,
+                        'updated_by' => 999,
+                        'status' => 1,
                     ]);
                 }
                 $page ++;

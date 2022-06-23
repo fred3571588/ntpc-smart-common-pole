@@ -31,7 +31,7 @@ class F01_Attachment_Manage_Controller extends Controller
         //                             ->orWhere('area_id',$area_id)
         //                             ->orWhere('status',$validated['pole_status'])
         //                             ->get(); //依條件搜尋
-        
+
         $sort_smartpole = DB::table('smart_poles')->when(!empty($validated['address']), function ($query) use ($validated) {
              $query->where('address', 'LIKE', '%' .$validated['address']. '%');
         })->when(!empty($validated['smart_pole_id']), function ($query) use ($validated) {
@@ -46,8 +46,11 @@ class F01_Attachment_Manage_Controller extends Controller
         {
             return $query;
         })->get();
-        $result = $sort_smartpole->all();
-        dd($result);
+        $result = $sort_smartpole->pluck('id');
+
+        dd($result->all());
+
+        $smartpole = SmartPole::whereIn('id',$result->all())->get();
         // if (!empty($validated['attachment'])) {
         //     $sort_smartpole->attached()->where('attachment', $validated['attachment'])->get();
         // }
