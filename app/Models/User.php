@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guard = [];
+    protected $guarded = [];
 
 
     /**
@@ -28,4 +28,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function logOperation()
+    {
+        return $this->hasMany(UserLogOperation::class);
+    }
+
+    public function permission()
+    {
+        return $this->hasOne(UserPermission::class);
+    }
+
+    public function token()
+    {
+        return $this->hasOne(UserToken::class);
+    }
+
+    public function announcement()
+    {
+        return $this->hasMany(Announcement::class);
+    }
 }

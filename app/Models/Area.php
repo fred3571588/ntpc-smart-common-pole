@@ -9,10 +9,15 @@ class Area extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
 
     public function smartpole()
     {
         return $this->hasMany(SmartPole::class);
+    }
+
+    public function switchbox()
+    {
+        return $this->hasMany(SwitchBox::class);
     }
 }

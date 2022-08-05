@@ -9,5 +9,15 @@ class AttachedDevice extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
+
+    public function attached()
+    {
+        return $this->belongsTo(SmartPoleAttached::class);
+    }
+
+    public function cost()
+    {
+        return $this->hasOne(AttachedDeviceCost::class);
+    }
 }

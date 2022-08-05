@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -15,18 +16,16 @@ class CreateSmartpoleAttachedTable extends Migration
     {
         Schema::create('smartpole_attached', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('smartpole_id')->name('共桿編號');
-            $table->boolean('isAttach')->name('有無附掛(0：無、1：有)');
-            $table->string('attachment',100)->nullable()->name('附掛物');
-            $table->bigInteger('rented_id')->nullable()->name('出租申請表單單號');
-            $table->string('attach_company',20)->nullable()->name('附掛廠商(單位)');
-            $table->dateTime('attach_startdate')->nullable()->name('附掛起始日期');
-            $table->dateTime('attach_enddate')->nullable()->name('附掛終止日期');
-            $table->string('memo',100)->nullable()->name('備註說明');
-            $table->integer('status')->name('資料狀態');
+            $table->boolean('isAttach')->comment('有無附掛(0：無、1：有)');
+            $table->string('attachment',100)->nullable()->comment('附掛種類');
+            $table->string('attach_company',20)->nullable()->comment('附掛廠商(單位)');
+            $table->dateTime('attach_startdate')->nullable()->comment('附掛起始日期');
+            $table->dateTime('attach_enddate')->nullable()->comment('附掛終止日期');
+            $table->string('memo',100)->nullable()->comment('備註說明');
+            $table->integer('status')->comment('資料狀態');
             $table->timestamps();
-            $table->bigInteger('created_by')->name('資料建立人員');
-            $table->bigInteger('updated_by')->name('最後編輯人員');
+            $table->bigInteger('created_by')->comment('資料建立人員');
+            $table->bigInteger('updated_by')->comment('最後編輯人員');
         });
     }
 

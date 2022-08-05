@@ -9,5 +9,16 @@ class Announcement extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = []; 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function document()
+    {
+        return $this->hasMany(Document::class);
+    }
+
 }

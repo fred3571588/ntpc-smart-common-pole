@@ -15,20 +15,18 @@ class CreateLeaseRequisitionTable extends Migration
     {
         Schema::create('leaseRequisition', function (Blueprint $table) {
             $table->id();
-            $table->integer('amount_pole')->name('出租桿數');
-            $table->integer('leaser_id')->name('租借者帳號編號');
-            $table->string('enterprise_name',100)->name('企業名稱');
-            $table->integer('taxnumber')->name('統一編號');
-            $table->string('contacts_name',10)->name('聯絡人名稱');
-            $table->string('contacts_gender',10)->name('性別');
-            $table->string('contacts_phone')->name('連絡電話');
-            $table->string('contacts_email',20)->name('E-mail');
-            $table->integer('current_state_id')->name('當前狀態');
-            $table->string('memo',100)->nullable()->name('備註說明');
-            $table->integer('status')->name('資料狀態');
+            $table->integer('amount_pole')->comment('出租桿數');
+            $table->string('enterprise_name',100)->comment('企業名稱');
+            $table->integer('taxnumber')->comment('統一編號');
+            $table->string('contacts_name',10)->comment('聯絡人名稱');
+            $table->string('contacts_gender',10)->comment('性別');
+            $table->string('contacts_phone')->comment('連絡電話');
+            $table->string('contacts_email',20)->comment('E-mail');
+            $table->string('memo',100)->nullable()->comment('備註說明');
+            $table->integer('status')->comment('資料狀態');
             $table->timestamps();
-            $table->bigInteger('created_by')->name('資料建立人員');
-            $table->bigInteger('updated_by')->name('最後編輯人員');
+            $table->bigInteger('created_by')->comment('資料建立人員');
+            $table->bigInteger('updated_by')->comment('最後編輯人員');
         });
     }
 

@@ -13,40 +13,68 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The path to the "home" route for your application.
      *
-     * This is used by Laravel authentication to redirect users after login.
+     * Typically, users are redirected here after authentication.
      *
      * @var string
      */
     public const HOME = '/home';
 
+    protected $namespace = 'App\\Http\\Controllers';
     /**
-     * The controller namespace for the application.
-     *
-     * When present, controller route declarations will automatically be prefixed with this namespace.
-     *
-     * @var string|null
-     */
-    // protected $namespace = 'App\\Http\\Controllers';
-
-    /**
-     * Define your route model bindings, pattern filters, etc.
+     * Define your route model bindings, pattern filters, and other route configuration.
      *
      * @return void
      */
     public function boot()
     {
         $this->configureRateLimiting();
+        // 類庫重新命名
+        $RouteServiceProvider = $this;
+        // 載入router
+        $this->routes(function () use ($RouteServiceProvider) {
+            // 預設token
+            $RouteServiceProvider->boot_def();
 
-        $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
-
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
+            Route::prefix('api')->group(function () use ($RouteServiceProvider) {
+                $RouteServiceProvider->boot_api();
+            });
         });
+    }
+
+    public function boot_def()
+    {
+        Route::prefix('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+    }
+
+    public function boot_api()
+    {
+        $names = [
+            //登入API
+            'A00_Login',
+            'B00_Announcement',
+            'C00_Document',
+            'D00_SmartPole',
+            'E00_Leaser',
+            'F00_Attachment',
+            'Z00_Other',
+        ];
+        foreach ($names as $name) {
+            if (substr($name, 0, 3) === '999') {
+                Route::prefix(substr($name, 0, 3))
+                    ->namespace($this->namespace . '\\' . $name)
+                    ->group(base_path(join('/', ['routes', 'api', $name . '_Api.php'])));
+            } else {
+                Route::prefix(substr($name, 0, 3))
+                    ->namespace($this->namespace . '\\' . $name)
+                    ->group(base_path(join('/', ['routes', 'api', $name . '_Api.php'])));
+            }
+        }
     }
 
     /**
@@ -57,7 +85,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function configureRateLimiting()
     {
         RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }
 }

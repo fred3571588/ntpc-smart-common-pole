@@ -9,14 +9,39 @@ class SmartPole extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected $guarded = [];
+
+    public function rented_pole()
+    {
+        return $this->belongsTo(RentedPole::class);
+    }
+
+    public function leaseRequisition_pole()
+    {
+        return $this->belongsTo(LeaseRequisitionPole::class);
+    }
 
     public function area()
     {
         return $this->belongsTo(Area::class);
     }
-    public function smartpole_type()
+    public function smart_pole_type()
     {
-        return $this->hasMany(SmartPole_Type::class);
+        return $this->belongsTo(SmartPoleType::class);
+    }
+
+    public function photo()
+    {
+        return $this->hasMany(SmartPolePhoto::class);
+    }
+
+    public function attached()
+    {
+        return $this->hasMany(SmartPoleAttached::class);
+    }
+
+    public function maintain()
+    {
+        return $this->hasMany(SmartPoleMaintain::class);
     }
 }
